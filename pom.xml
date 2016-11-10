@@ -123,7 +123,7 @@
 				<!-- 对插件进行配置 -->
 				<configuration>
 					<!-- 内嵌插件 端口 -->
-					<port>8080</port>
+					<port>8090</port>
 					<!-- 远程发布 -->
 					<url>http://localhost:8080/manager/text</url>
 					<server>myserver</server>

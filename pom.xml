@@ -63,18 +63,24 @@
 			<version>1.0.1.Final</version>
 		</dependency>
 		<!-- Servlet & Jsp -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>3.0-alpha-1</version>
-			<scope>provided</scope> <!-- 只在编译和测试环境下使用，不参与打包运行，默认值Runtime -->
+			<scope>provided</scope> 只在编译和测试环境下使用，不参与打包运行，默认值Runtime
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.0</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
+		<!-- <dependency>
+		    <groupId>org.apache.tomcat</groupId>
+		    <artifactId>tomcat-jsp-api</artifactId>
+		    <version>8.0.17</version>
+		    <scope>provided</scope>
+		</dependency> -->
 		<!-- log4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -108,27 +114,39 @@
 	</dependencies>
 	<build>
 		<plugins>
-			<plugin>
+			  <!-- <plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			<!-- 使用 plugin 配置tomcat-maven-plugin -->
+			使用 plugin 配置tomcat-maven-plugin
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>1.1</version>
-				<!-- 对插件进行配置 -->
+				对插件进行配置
 				<configuration>
-					<!-- 内嵌插件 端口 -->
-					<port>8090</port>
-					<!-- 远程发布 -->
+					内嵌插件 端口
+					<port>8080</port>
+					远程发布
 					<url>http://localhost:8080/manager/text</url>
 					<server>myserver</server>
 				</configuration>
-			</plugin>
+			</plugin>   -->
+			<plugin>  
+            <groupId>org.apache.tomcat.maven</groupId>  
+            <artifactId>tomcat7-maven-plugin</artifactId>  
+            <configuration>  
+                <port>8080</port>  
+                <path>/mavenbos</path>  
+                <url>http://localhost:8080/manager/text</url>  
+                <username>admin</username>  
+                <password>admin</password>  
+            </configuration>  
+        </plugin>  
+			 
 		</plugins>
 	</build>
 </project>

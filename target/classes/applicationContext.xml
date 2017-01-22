@@ -36,8 +36,34 @@
 		</property>
 		<!-- 映射hbm -->
 		<property name="mappingDirectoryLocations" value="classpath:cn/itcast/bos/domain"></property>
-		
-		
 	</bean>
+	
+	<!-- 配置事务 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 事务管理通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 对哪些方法采用，设置哪些事务管理属性 -->
+		<tx:attributes>
+			<!-- 查询相关方法 -->
+			<tx:method name="get*" propagation="REQUIRED" isolation="DEFAULT" read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED" isolation="DEFAULT" read-only="true" />
+			<tx:method name="list*" propagation="REQUIRED" isolation="DEFAULT" read-only="true" />
+			<!-- 增删改方法 -->
+			
+			<tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT" />
+			<tx:method name="add*" propagation="REQUIRED" isolation="DEFAULT" />
+			<tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT" />
+			<tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- aop切面 -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.itcast.bos.service.impl..*())"/>
+	</aop:config>
+	
 
 </beans>

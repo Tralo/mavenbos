@@ -122,4 +122,13 @@ public class User implements java.io.Serializable {
 		this.remark = remark;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", salary=" + salary
+				+ ", birthday=" + birthday + ", gender=" + gender + ", station=" + station + ", telephone=" + telephone
+				+ ", remark=" + remark + "]";
+	}
+	
+	
+
 }

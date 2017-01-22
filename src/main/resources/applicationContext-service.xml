@@ -11,7 +11,7 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	
-	
+	<!-- 配置Service -->
+	<bean id="userService" class="cn.itcast.bos.service.impl.user.UserServiceImpl"></bean>
 	
 </beans>

@@ -17,6 +17,10 @@
 		<action name="page_*_*">
 			<result type="dispatcher">/WEB-INF/pages/{1}/{2}.jsp</result>
 		</action>
+		<action name="login" class="loginAction">
+			<result name="input">/login.jsp</result>
+			<result type="redirect">/index.jsp</result>
+		</action>
 	</package>
 
 </struts>

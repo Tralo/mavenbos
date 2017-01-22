@@ -56,6 +56,7 @@ input[type=password] {
 			</div>
 			<div class="loginForm">
 				<s:form namespace="/" action="login" id="loginform" name="loginform" method="post" cssClass="niceform">
+					<s:actionerror/>
 					<div id="idInputLine" class="loginFormIpt showPlaceholder"
 						style="margin-top: 5px;">
 						<s:textfield id="loginform:idInput" name="username"

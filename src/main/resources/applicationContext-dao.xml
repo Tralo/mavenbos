@@ -10,10 +10,11 @@
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
-	<import resource="classpath:applicationContext-common.xml" />
-	<import resource="classpath:applicationContext-dao.xml" />
-	<import resource="classpath:applicationContext-service.xml" />
-	<import resource="classpath:applicationContext-action.xml" />
-	
+	<bean id="userDAO" class="cn.itcast.bos.dao.impl.GenericDAOImpl">
+		<!-- 构造器注入，传入实体类完整类名 -->
+		<constructor-arg index="0" type="java.lang.String" value="cn.itcast.bos.domain.user.User"></constructor-arg>
+		<!-- 注入SessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	
 </beans>

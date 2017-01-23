@@ -55,7 +55,7 @@ input[type=password] {
 				<div id="lbNormal" class="loginFuncMobile">员工登录</div>
 			</div>
 			<div class="loginForm">
-				<s:form namespace="/" action="login" id="loginform" name="loginform" method="post" cssClass="niceform">
+				<s:form namespace="/" action="login" id="loginform" name="loginform" method="post" cssClass="niceform" target="_top">
 					<s:actionerror/>
 					<div id="idInputLine" class="loginFormIpt showPlaceholder"
 						style="margin-top: 5px;">

@@ -165,7 +165,7 @@
 		</div>
 		<div id="sessionInfoDiv"
 			style="position: absolute;right: 5px;top:10px;">
-			[<strong>超级管理员</strong>]，欢迎你！您使用[<strong>192.168.1.100</strong>]IP登录！
+			[<strong>${user.username }</strong>]，欢迎你！您使用[<strong>${pageContext.request.remoteAddr }</strong>]IP登录！
 		</div>
 		<div style="position: absolute; right: 5px; bottom: 10px; ">
 			<a href="javascript:void(0);" class="easyui-menubutton"

@@ -19,4 +19,13 @@ public class UserServiceImpl extends BaseService implements UserService{
 		return null;
 	}
 
+	@Override
+	public void editPassword(User user) {
+		//如果修改用户所有内容，直接调用update
+		//如果修改用户某个属性，先查询，再修改
+		User existUser = userDAO.findById(user.getId());
+		existUser.setPassword(MD5Utils.md5(user.getPassword()));
+		userDAO.update(existUser);
+	}
+
 }

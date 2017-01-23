@@ -62,6 +62,7 @@
 			<tx:method name="add*" propagation="REQUIRED" isolation="DEFAULT" />
 			<tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT" />
 			<tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT" />
+			<tx:method name="edit*" propagation="REQUIRED" isolation="DEFAULT" />
 		</tx:attributes>
 	</tx:advice>
 	

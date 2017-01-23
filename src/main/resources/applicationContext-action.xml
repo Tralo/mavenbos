@@ -13,5 +13,8 @@
 	<bean id="loginAction" class="cn.itcast.bos.web.action.user.LoginAction" scope="prototype">
 	
 	</bean>
+	<bean id="userAction" class="cn.itcast.bos.web.action.user.UserAction" scope="prototype">
+	
+	</bean>
 	
 </beans>

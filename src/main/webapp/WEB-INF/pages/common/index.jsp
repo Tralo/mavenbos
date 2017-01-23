@@ -88,7 +88,36 @@
 		});
 		
 		$("#btnEp").click(function(){
-			alert("修改密码");
+			//获得新密码和确认密码的输入内容
+			var newPass = $("#txtNewPass").val();
+			var rePass = $("#txtRePass").val();
+			//进行校验
+			if($.trim(newPass) == ''){
+				//新密码输入为空
+				$.messager.alert('警告','新密码不能为空或者空白字符','warning');
+				return;
+			}
+			//两次密码是否输入一致
+			if($.trim(newPass) != $.trim(rePass)){
+				$.messager.alert('警告','两次密码输入不一致','warning');
+				return;
+			}
+			//通过 Ajax 将新密码发送到服务器
+			$.post("${pageContxt.request.contextPath}/mavenbos/user_editpassword.action",
+			{
+				'password':newPass
+			},
+			function(data){
+				if(data.result == 'success'){
+					$.messager.alert("提示",data.msg,"info");
+				} 
+				if(data.result == "failure"){
+					$.messager.alert("提示",data.msg,"info");
+					
+				}
+				//窗口关闭
+				$("#editPwdWindow").window('close');
+			});
 		});
 	});
 

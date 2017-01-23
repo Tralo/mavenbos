@@ -14,5 +14,11 @@ public interface UserService {
 	 * @return
 	 */
 	User login(User user);
+
+	/**
+	 * 修改密码
+	 * @param user
+	 */
+	void editPassword(User user);
 	
 }

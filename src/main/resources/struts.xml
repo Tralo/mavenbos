@@ -9,7 +9,7 @@
 	
 	<!-- 修改 form 默认布局样式 -->
 
-	<package name="needLogin" extends="struts-default">
+	<package name="needLogin" extends="json-default">
 		<!-- 注册拦截器 -->
 		<interceptors>
 			<interceptor name="login" class="cn.itcast.bos.web.action.interceptor.LoginInterceptor"></interceptor>
@@ -34,7 +34,14 @@
 		<action name="page_*_*">
 			<result type="dispatcher">/WEB-INF/pages/{1}/{2}.jsp</result>
 		</action>
-		
+		<!-- 用户管理 -->
+		<action name="user_*" class="userAction" method="{1}">
+			<!-- 修改密码 -->
+			<result name="editpasswordSUCCESS" type="json">
+				<!-- 配置root参数，指定将值栈哪个数据返回 -->
+				<param name="root">map</param>
+			</result>
+		</action>
 	</package>
 	
 	<!-- 这个包不需要登陆拦截 -->

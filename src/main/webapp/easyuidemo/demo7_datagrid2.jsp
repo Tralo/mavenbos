@@ -18,6 +18,17 @@
 <script type="text/javascript">
 	$(function(){
 		$("#grid").datagrid({
+			//工具栏
+			toolbar:[
+				{
+					id:'add',
+					text:'添加',
+					iconCls:'icon-add',
+					handler:function(){
+						alert("添加商品");
+					}
+				}
+			],
 			//表头(列信息)
 			columns: [[
 				{

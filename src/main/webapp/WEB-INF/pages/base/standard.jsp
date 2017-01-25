@@ -135,7 +135,16 @@
 	function doDblClickRow(){
 		alert("双击表格数据...");
 	}
-	
+	function commitStandardForm(){
+		// 先判断 form 是否通过校验，如果通过，提交表单('$('#standardForm').submit();'))
+		if($('#standardForm').form('validate')){// 执行 EasyUI 校验方法
+			//通过校验
+			$('#standardForm').submit();
+		} else {
+			//没通过校验
+			$.messager.alert('警告','表单存在非法数据，请重新输入','info');
+		}
+	}
 		
 </script>	
 </head>
@@ -147,26 +156,26 @@
 	<div class="easyui-window" title="添加收派标准" id="addStandardWindow" collapsible="false" minimizable="false" maximizable="false" style="top:100px;left:200px">
 		<div region="north" style="height:31px;overflow:hidden;" split="false" border="false" >
 			<div class="datagrid-toolbar">
-				<a id="save" icon="icon-save" href="#" class="easyui-linkbutton" plain="true" >保存</a>
+				<a id="save" icon="icon-save" href="javascript:commitStandardForm();" class="easyui-linkbutton" plain="true" >保存</a>
 			</div>
 		</div>
 		<div region="center" style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="standardForm" action="${pageContext.request.contextPath }/standard_save.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">收派标准信息</td>
 					</tr>
 					<tr>
 						<td>标准名称</td>
-						<td><input type="text" class="easyui-validatebox" required="true" /></td>
+						<td><input name="name" type="text" class="easyui-validatebox" data-options="required:true" /></td>
 					</tr>
 					<tr>
 						<td>最小重量</td>
-						<td><input type="text" class="easyui-numberbox"  /></td>
+						<td><input name="minweight" type="text" class="easyui-numberbox"  /></td>
 					</tr>
 					<tr>
 						<td>最大重量</td>
-						<td><input type="text" class="easyui-numberbox" /></td>
+						<td><input name="maxweight" type="text" class="easyui-numberbox" /></td>
 					</tr>
 					</table>
 			</form>

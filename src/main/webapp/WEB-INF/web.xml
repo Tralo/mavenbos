@@ -14,12 +14,7 @@
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <!-- struts核心控制器 -->
-  <filter>
-  	<filter-name>struts2</filter-name>
-  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-  </filter>
-  <!-- OpenSessionInView -->
+    <!-- OpenSessionInView -->
   <filter>
   	<filter-name>OpenSessionInView</filter-name>
   	<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
@@ -28,8 +23,11 @@
   	<filter-name>OpenSessionInView</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
-  
-  
+  <!-- struts核心控制器 -->
+  <filter>
+  	<filter-name>struts2</filter-name>
+  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
   <filter-mapping>
   	<filter-name>struts2</filter-name>
   	<url-pattern>/*</url-pattern>

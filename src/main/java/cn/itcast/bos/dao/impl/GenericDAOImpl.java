@@ -55,7 +55,6 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 
 	@Override
 	public List<T> findAll() {
-		
 		return this.getHibernateTemplate().find("from " + className);
 //		return this.getHibernateTemplate().find("from " + clazz.getName());
 	}

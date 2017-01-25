@@ -79,24 +79,34 @@
 		field : 'operator.username',
 		title : '操作人',
 		width : 120,
-		align : 'center'
-		/* formatter : function(data,row, index){
-			return row.operator.username;
-		} */
+		align : 'center',
+		formatter : function(value,rowData, rowIndex){
+			// value 表示匹配了当前属性的值
+			// rowData 代表了整行数据
+			// rowIndex 代表行号
+			if(rowData.user != null){
+				return rowData.user.username;
+			}
+		} 
 		
 	}, {
 		field : 'updatetime',
 		title : '操作时间',
 		width : 160,
-		align : 'center'
+		align : 'center',
+		formatter: function(value,rowData,rowIndex){
+			return value.replace("T"," ");
+		}
 	}, {
 		field : 'operator.station',
 		title : '操作单位',
 		width : 200,
-		align : 'center'
-		/* formatter : function(data,row, index){
-			return row.operator.station;
-		} */
+		align : 'center',
+		formatter : function(value,rowData, rowIndex){
+			if(rowData.user != null){
+				return rowData.user.station;
+			}
+		} 
 	} ] ];
 	
 	$(function(){

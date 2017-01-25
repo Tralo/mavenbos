@@ -56,8 +56,8 @@
 					total,<!-- pageResourceBean的total属性返回 -->
 					rows\[\d+\]\.id,
 					rows\[\d+\]\.name,
-					rows\[\d+\]\.minvalue,
-					rows\[\d+\]\.maxvalue,
+					rows\[\d+\]\.minweight,
+					rows\[\d+\]\.maxweight,
 					rows\[\d+\]\.updatetime,
 					rows\[\d+\]\.user\.username,
 					rows\[\d+\]\.user\.station,

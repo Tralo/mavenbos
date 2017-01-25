@@ -79,10 +79,10 @@
 		field : 'operator.username',
 		title : '操作人',
 		width : 120,
-		align : 'center',
-		formatter : function(data,row, index){
+		align : 'center'
+		/* formatter : function(data,row, index){
 			return row.operator.username;
-		}
+		} */
 		
 	}, {
 		field : 'updatetime',
@@ -93,10 +93,10 @@
 		field : 'operator.station',
 		title : '操作单位',
 		width : 200,
-		align : 'center',
-		formatter : function(data,row, index){
+		align : 'center'
+		/* formatter : function(data,row, index){
 			return row.operator.station;
-		}
+		} */
 	} ] ];
 	
 	$(function(){
@@ -113,7 +113,7 @@
 			pageList: [30,50,100],
 			pagination : true,
 			toolbar : toolbar,
-			url : "json/standard.json",
+			url : "${pageContext.request.contextPath }/standard_pageQuery.action",
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow

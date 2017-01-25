@@ -1,6 +1,12 @@
 package cn.itcast.bos.service.impl.bc;
 
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionContext;
+
 import cn.itcast.bos.domain.bc.Standard;
+import cn.itcast.bos.page.PageRequestBean;
+import cn.itcast.bos.page.PageResponseBean;
 import cn.itcast.bos.service.base.BaseService;
 import cn.itcast.bos.service.bc.StandardService;
 
@@ -11,6 +17,24 @@ public class StandardSerivceImpl extends BaseService implements StandardService{
 		
 		standardDAO.save(standard);
 		
+	}
+
+	@Override
+	public PageResponseBean pageQuery(PageRequestBean pageRequestBean) {
+		PageResponseBean pageResponseBean = new PageResponseBean();
+		
+		// 满足当前条件，记录总条数
+		long total = standardDAO.findTotalCount(pageRequestBean.getDetachedCriteria());
+		pageResponseBean.setTotal(total);
+		
+		// 查询当前显示数据
+		int firstResult = (pageRequestBean.getPage() - 1) * pageRequestBean.getRows(); //从哪条开始
+		int maxResult =  pageRequestBean.getRows(); // 返回记录数
+		pageRequestBean.getDetachedCriteria().setProjection(null);// 清除之前 rowCount 的投影效果
+		List<Standard> data = standardDAO.pageQuery(pageRequestBean.getDetachedCriteria(),firstResult,maxResult);
+		pageResponseBean.setRows(data);
+		
+		return pageResponseBean;
 	}
 
 }

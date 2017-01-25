@@ -52,7 +52,8 @@
 			url:'data.json',
 			//其它属性
 			rownumbers: true,
-			pagination: true
+			pagination: true,
+			pageList:[20,30,100]
 		});
 	});
 

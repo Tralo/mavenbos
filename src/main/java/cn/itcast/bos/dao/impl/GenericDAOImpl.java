@@ -5,9 +5,11 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import cn.itcast.bos.dao.GenericDAO;
+import cn.itcast.bos.domain.bc.Standard;
 
 public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO<T> {
 	
@@ -66,6 +68,20 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 	@Override
 	public List<T> findByCriteria(DetachedCriteria detachedCriteria) {
 		return this.getHibernateTemplate().findByCriteria(detachedCriteria);
+	}
+
+	@Override
+	public long findTotalCount(DetachedCriteria detachedCriteria) {
+		// select count(*) from bc_standard
+		detachedCriteria.setProjection(Projections.rowCount());
+		List<Long> result = this.getHibernateTemplate().findByCriteria(detachedCriteria,0,1);
+		return result.get(0);
+	}
+	
+
+	@Override
+	public List<T> pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResult) {
+		return this.getHibernateTemplate().findByCriteria(detachedCriteria,firstResult,maxResult);
 	}
 
 }

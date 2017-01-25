@@ -12,6 +12,10 @@ import cn.itcast.bos.domain.user.User;
 
 public class Standard implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// Fields
 	private String id; // 主键 （所有 varchar类型主键，生成PO类 使用 assigned 策略 委派策略）
 	private User user; // 操作人 （由谁制定标准，当前登陆用户 ）

@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import cn.itcast.bos.service.bc.StandardService;
 import cn.itcast.bos.service.user.UserService;
 
 /**
@@ -17,6 +18,11 @@ public abstract class BaseAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	@Resource(name = "userService")
 	protected UserService userService;
+	
+	
+	
+	@Resource(name = "standardService")
+	protected StandardService standardService;
 	
 
 }

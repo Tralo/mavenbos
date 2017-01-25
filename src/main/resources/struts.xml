@@ -42,6 +42,10 @@
 				<param name="root">map</param>
 			</result>
 		</action>
+		<!-- 收派标准 -->
+		<action name="standard_*" class="standardAction" method="{1}">
+			<result name="saveSUCCESS">/WEB-INF/pages/base/standard.jsp</result>
+		</action>
 	</package>
 	
 	<!-- 这个包不需要登陆拦截 -->

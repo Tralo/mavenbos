@@ -13,5 +13,6 @@
 	
 	<!-- 配置Service -->
 	<bean id="userService" class="cn.itcast.bos.service.impl.user.UserServiceImpl"></bean>
+	<bean id="standardService" class="cn.itcast.bos.service.impl.bc.StandardSerivceImpl"></bean>
 	
 </beans>

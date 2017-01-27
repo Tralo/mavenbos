@@ -23,13 +23,12 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 		this.className = className;
 	}
 
-	@Override
-	public void save(T obj) {
-//		this.getSession();//使用原始hibernate编程方式
-//		this.getHibernateTemplate();//使用 Spring 提供模版工具类
-		this.getHibernateTemplate().save(obj);
-	}
 
+	@Override
+	public void saveOrUpdate(T obj) {
+		this.getHibernateTemplate().saveOrUpdate(obj);
+	}
+	
 	@Override
 	public void update(T obj) {
 		this.getHibernateTemplate().update(obj);
@@ -82,5 +81,6 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 	public List<T> pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResult) {
 		return this.getHibernateTemplate().findByCriteria(detachedCriteria,firstResult,maxResult);
 	}
+
 
 }

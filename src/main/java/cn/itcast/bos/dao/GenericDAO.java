@@ -13,11 +13,13 @@ import cn.itcast.bos.domain.bc.Standard;
  */
 public interface GenericDAO<T>{
 	
+
+	
 	/**
-	 * 保存
+	 * 保存或更新
 	 * @param obj
 	 */
-	public void save(T obj);
+	public void saveOrUpdate(T obj);
 
 	/**
 	 * 修改

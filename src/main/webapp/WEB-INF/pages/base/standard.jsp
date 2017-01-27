@@ -29,6 +29,11 @@
 <script type="text/javascript">
 	function doAdd(){
 		//alert("增加...");
+		// 弹出修改窗口
+		$('#name').val('');
+		$('#minweight').numberbox('setValue',null);
+		$('#maxweight').numberbox('setValue',null);
+		$('#id').val('');
 		$('#addStandardWindow').window("open");
 	}
 	
@@ -141,9 +146,15 @@
         });
 		
 	});
+	//双击事件
+	function doDblClickRow(rowIndex, rowData){// rowIndex行号， rowData双击行数据
+		// 弹出修改窗口
+		$('#name').val(rowData.name);
+		$('#minweight').numberbox('setValue',rowData.minweight);
+		$('#maxweight').numberbox('setValue',rowData.maxweight);
+		$('#id').val(rowData.id);
+		$('#addStandardWindow').window('open');
 	
-	function doDblClickRow(){
-		alert("双击表格数据...");
 	}
 	function commitStandardForm(){
 		// 先判断 form 是否通过校验，如果通过，提交表单('$('#standardForm').submit();'))
@@ -173,19 +184,22 @@
 			<form id="standardForm" action="${pageContext.request.contextPath }/standard_save.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
-						<td colspan="2">收派标准信息</td>
+						<td colspan="2">收派标准信息
+						<input type="hidden" name="id" id="id" />
+						</td>
+						
 					</tr>
 					<tr>
 						<td>标准名称</td>
-						<td><input name="name" type="text" class="easyui-validatebox" data-options="required:true" /></td>
+						<td><input id="name" name="name" type="text" class="easyui-validatebox" data-options="required:true" /></td>
 					</tr>
 					<tr>
 						<td>最小重量</td>
-						<td><input name="minweight" type="text" class="easyui-numberbox"  /></td>
+						<td><input id="minweight" name="minweight" type="text" class="easyui-numberbox"  /></td>
 					</tr>
 					<tr>
 						<td>最大重量</td>
-						<td><input name="maxweight" type="text" class="easyui-numberbox" /></td>
+						<td><input id="maxweight" name="maxweight" type="text" class="easyui-numberbox" /></td>
 					</tr>
 					</table>
 			</form>

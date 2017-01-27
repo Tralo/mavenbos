@@ -15,7 +15,7 @@ public class StandardSerivceImpl extends BaseService implements StandardService{
 	@Override
 	public void saveStandard(Standard standard) {
 		
-		standardDAO.save(standard);
+		standardDAO.saveOrUpdate(standard);
 		
 	}
 

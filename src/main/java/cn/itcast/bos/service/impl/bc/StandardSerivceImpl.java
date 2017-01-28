@@ -37,4 +37,14 @@ public class StandardSerivceImpl extends BaseService implements StandardService{
 		return pageResponseBean;
 	}
 
+	@Override
+	public void delBatch(String[] ids) {
+		//将数据 deltag 改为 1
+		for(String id : ids){
+			Standard standard = standardDAO.findById(id);
+			standard.setDeltag("1");
+		}
+		
+	}
+
 }

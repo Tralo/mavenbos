@@ -68,7 +68,7 @@
 	
 	<!-- aop切面 -->
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.itcast.bos.service.impl..*())"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.itcast.bos.service.impl..*(..))"/>
 	</aop:config>
 	
 

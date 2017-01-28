@@ -14,19 +14,16 @@
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-    <!-- OpenSessionInView -->
+  <!-- OpenSessionInView  -->
   <filter>
   	<filter-name>OpenSessionInView</filter-name>
   	<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
-  	<init-param>
-      <param-name>singleSession</param-name>
-      <param-value>false</param-value>
-    </init-param>
   </filter>
   <filter-mapping>
   	<filter-name>OpenSessionInView</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
+  
   <!-- struts核心控制器 -->
   <filter>
   	<filter-name>struts2</filter-name>

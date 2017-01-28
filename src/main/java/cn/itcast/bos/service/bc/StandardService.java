@@ -15,4 +15,7 @@ public interface StandardService {
 	//分页查询
 	PageResponseBean pageQuery(PageRequestBean pageRequestBean);
 
+	//批量删除
+	void delBatch(String[] ids);
+
 }

@@ -63,6 +63,9 @@
 					rows\[\d+\]\.user\.station,
 				</param>
 			</result>
+			<result name="delBatchSUCCESS">
+				/WEB-INF/pages/base/standard.jsp
+			</result>
 		</action>
 	</package>
 	

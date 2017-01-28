@@ -42,7 +42,16 @@
 	}
 	
 	function doDelete(){
-		alert("删除...");
+		//判断是否选择表格数据
+		var array = $("#grid").datagrid('getSelections');
+		if(array.length == 0){
+			//一行也没选
+			$.messager.alert('警告','删除数据要先选中！','warning');
+			return;
+		}
+		
+		//提交删除表单
+		$("#delForm").submit();
 	}
 	//工具栏
 	var toolbar = [ {
@@ -170,9 +179,11 @@
 </script>	
 </head>
 <body class="easyui-layout" style="visibility:hidden;">
-    <div region="center" border="false">
-    	<table id="grid"></table>
-	</div>
+    <form id="delForm" action="${pageContext.request.contextPath }/standard_delBatch.action" method="post">
+    	<div region="center" border="false">
+	    	<table id="grid"></table>
+		</div>
+    </form>
 	
 	<div class="easyui-window" title="添加收派标准" id="addStandardWindow" collapsible="false" minimizable="false" maximizable="false" style="top:100px;left:200px">
 		<div region="north" style="height:31px;overflow:hidden;" split="false" border="false" >

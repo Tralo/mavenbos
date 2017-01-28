@@ -65,6 +65,13 @@ public class StandardAction extends BaseAction implements ModelDriven<Standard>{
 		
 		return "pageQuerySUCCESS";
 	}
+	//业务方法 --- 批量删除
+	public String delBatch(){
+		//转换成多个id
+		String[] ids = standard.getId().split(", ");
+		standardService.delBatch(ids);
+		return "delBatchSUCCESS";
+	}
 	
 	// 属性驱动
 	private int page;

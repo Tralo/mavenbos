@@ -132,7 +132,7 @@
 			pageList: [30,50,100],
 			pagination : true,
 			toolbar : toolbar,
-			url : "json/staff.json",
+			url : "${pageContext.request.contextPath}/staff_pageQuery.action",
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow
@@ -152,9 +152,9 @@
 		/* $.post("${pageContext.request.contextPath}/standard_ajaxlist.action",function(data){
 			//根据返回结果生成下拉列表
 			//传统js
-			/* for(var i = 0; i < data.length; i++){
+			 for(var i = 0; i < data.length; i++){
 				
-			} */
+			} 
 			// jquery
 			$(data).each(function(){
 				var option = $("<option value='" + this.id + "'>"+ this.name + "</option>");
@@ -168,6 +168,16 @@
 			
 			
 		}); */
+		$("#save").click(function(){
+			//进行form校验
+			if($('#staffForm').form('validate')){
+				//通过校验
+				$("#staffForm").submit();
+			} else {
+				//校验失败
+				$.messager.alert('警告','表单存在非法数据项，请重新输入','warning');
+			}
+		});
 		
 	});
 
@@ -188,7 +198,7 @@
 		</div>
 		
 		<div region="center" style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="staffForm" action="${pageContext.request.contextPath }/staff_saveOrUpdate.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">收派员信息</td>
@@ -221,7 +231,9 @@
 							<!-- <select id="standardList">
 								
 							</select> --> 
-							<input class="easyui-combobox" data-options="url:'${pageContext.request.contextPath}/standard_ajaxlist.action',valueField:'id',textField:'name'" />
+							<!-- 目标model 是 Staff, 提供setStandard 方法，在Standard中提供 setId 的方法 -->
+							<input class="easyui-combobox" name="standard.id"
+							 data-options="required:true,url:'${pageContext.request.contextPath}/standard_ajaxlist.action',valueField:'id',textField:'name'" />
 						</td>
 					</tr>
 					</table>

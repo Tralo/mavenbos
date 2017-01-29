@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import cn.itcast.bos.service.bc.StaffService;
 import cn.itcast.bos.service.bc.StandardService;
 import cn.itcast.bos.service.user.UserService;
 
@@ -23,6 +24,9 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "standardService")
 	protected StandardService standardService;
+	
+	@Resource(name = "staffService")
+	protected StaffService staffService;
 	
 
 }

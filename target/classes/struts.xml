@@ -77,6 +77,22 @@
 				</param>
 			</result>
 		</action>
+		
+		<action name="staff_*" class="staffAction" method="{1}">
+			<result name="saveOrUpdateSUCCESS">/WEB-INF/pages/base/staff.jsp</result>
+			<result name="pageQuerySUCCESS" type="json">
+				<param name="root">pageResponseBean</param>
+				<param name="includeProperties">
+					total,
+					rows\[\d+\]\.id,
+					rows\[\d+\]\.name,
+					rows\[\d+\]\.telephone,
+					rows\[\d+\]\.haspda,
+					rows\[\d+\]\.deltag,
+					rows\[\d+\]\.standard\.name
+				</param>
+			</result>
+		</action>
 	</package>
 	
 	<!-- 这个包不需要登陆拦截 -->

@@ -10,7 +10,7 @@ import cn.itcast.bos.page.PageResponseBean;
 import cn.itcast.bos.service.base.BaseService;
 import cn.itcast.bos.service.bc.StandardService;
 
-public class StandardSerivceImpl extends BaseService implements StandardService{
+public class StandardServiceImpl extends BaseService implements StandardService{
 
 	@Override
 	public void saveStandard(Standard standard) {

@@ -3,6 +3,7 @@ package cn.itcast.bos.service.base;
 import javax.annotation.Resource;
 
 import cn.itcast.bos.dao.GenericDAO;
+import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
 import cn.itcast.bos.domain.user.User;
 
@@ -15,6 +16,9 @@ public abstract class BaseService {
 
 	@Resource(name = "standardDAO")
 	protected GenericDAO<Standard> standardDAO;
+	
+	@Resource(name = "staffDAO")
+	protected GenericDAO<Staff> staffDAO;
 	
 
 }

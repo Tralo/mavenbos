@@ -25,7 +25,6 @@ public class UserServiceImpl extends BaseService implements UserService{
 		//如果修改用户某个属性，先查询，再修改
 		User existUser = userDAO.findById(user.getId());
 		existUser.setPassword(MD5Utils.md5(user.getPassword()));
-		userDAO.update(existUser);
 	}
 
 }

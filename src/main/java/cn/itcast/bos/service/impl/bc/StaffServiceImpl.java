@@ -18,6 +18,24 @@ public class StaffServiceImpl extends BaseService implements StaffService{
 		return pageQuery(pageRequestBean,staffDAO);
 	}
 
+	@Override
+	public void delBatch(String[] ids) {
+		// 修改每个id 对应的取派员deltag 为 1
+		for(String id : ids){
+			Staff staff = staffDAO.findById(id);
+			staff.setDeltag("1");
+		}
+	}
+
+	@Override
+	public void recover(String[] ids) {
+		// 修改每个id 对应的取派员deltag 为 1
+		for(String id : ids){
+			Staff staff = staffDAO.findById(id);
+			staff.setDeltag("0");
+		}
+	}
+
 	
 
 }

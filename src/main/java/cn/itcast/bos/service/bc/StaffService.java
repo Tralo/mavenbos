@@ -7,5 +7,9 @@ public interface StaffService extends PageQuery{
 
 	void saveOrUpdate(Staff staff);
 
+	void delBatch(String[] ids);
+
+	void recover(String[] ids);
+
 
 }

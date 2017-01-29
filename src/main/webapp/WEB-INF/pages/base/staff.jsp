@@ -45,11 +45,25 @@
 	}
 	
 	function doDelete(){
-		alert("删除...");
+		// 先判断用户是否选择
+		var array = $("#grid").datagrid("getSelections");
+		if(array.length == 0){
+			$.messager.alert("警告",'删除前必须选择!','warning');
+		} else {
+			var path = "${pageContext.request.contextPath }/staff_delBatch.action";  
+		    $('#delForm').attr("action", path).submit();
+		}
 	}
 	
 	function doRestore(){
-		alert("将取派员还原...");
+		// 先判断用户是否选择
+		var array = $("#grid").datagrid("getSelections");
+		if(array.length == 0){
+			$.messager.alert("警告",'还原前必须选择!','warning');
+		} else {
+			var path = "${pageContext.request.contextPath }/staff_recover.action";  
+		    $('#delForm').attr("action", path).submit();
+		}
 	}
 	//工具栏
 	var toolbar = [ {
@@ -210,9 +224,11 @@
 </script>	
 </head>
 <body class="easyui-layout" style="visibility:hidden;">
-	<div region="center" border="false">
-    	<table id="grid"></table>
-	</div>
+	<form id="delForm" method="post">
+		<div region="center" border="false">
+	    	<table id="grid"></table>
+		</div>
+	</form>
 	<div class="easyui-window" title="对收派员进行添加或者修改" id="addStaffWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 		<div region="north" style="height:31px;overflow:hidden;" split="false" border="false" >
 			<div class="datagrid-toolbar">

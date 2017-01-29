@@ -39,6 +39,23 @@ public class StaffAction extends BaseAction implements ModelDriven<Staff>{
 		ActionContext.getContext().put("pageResponseBean", pageResponseBean);
 		return "pageQuerySUCCESS";
 	}
+	// 业务方法 --- 作废
+	public String delBatch(){
+		//获取要作废取派员 i
+		String[] ids = staff.getId().split(", ");
+		// 调用业务层，作废
+		staffService.delBatch(ids);
+		
+		return "delBatchSUCCESS";
+	}
+	// 业务方法 --- 还原
+	public String recover(){
+		//获取要作废取派员 i
+		String[] ids = staff.getId().split(", ");
+		// 调用业务层，作废
+		staffService.recover(ids);
+		return "recoverSUCCESS";
+	}
 
 	@Override
 	public Staff getModel() {

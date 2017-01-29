@@ -1,13 +1,11 @@
 package cn.itcast.bos.service.bc;
 
 import cn.itcast.bos.domain.bc.Staff;
-import cn.itcast.bos.page.PageRequestBean;
-import cn.itcast.bos.page.PageResponseBean;
+import cn.itcast.bos.page.PageQuery;
 
-public interface StaffService {
+public interface StaffService extends PageQuery{
 
 	void saveOrUpdate(Staff staff);
 
-	PageResponseBean pageQuery(PageRequestBean pageRequestBean);
 
 }

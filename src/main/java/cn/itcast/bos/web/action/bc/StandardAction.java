@@ -48,15 +48,10 @@ public class StandardAction extends BaseAction implements ModelDriven<Standard>{
 	}
 	//业务方法 ---- 分页查询收派标准数据
 	public String pageQuery(){
-		//封装分页查询条件对象
-		PageRequestBean pageRequestBean = new PageRequestBean();
-		pageRequestBean.setPage(page);
-		pageRequestBean.setRows(rows);
-		
 		//隐含条件，查询未删除标准
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Standard.class);// 查询标准表所有数据 from Standard
 		detachedCriteria.add(Restrictions.eq("deltag", "0"));
-		pageRequestBean.setDetachedCriteria(detachedCriteria);
+		PageRequestBean pageRequestBean = initPageRequestBean(detachedCriteria);
 		
 		
 		//调用业务层

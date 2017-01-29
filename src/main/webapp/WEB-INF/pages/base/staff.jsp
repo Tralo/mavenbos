@@ -28,6 +28,14 @@
 	type="text/javascript"></script>
 <script type="text/javascript">
 	function doAdd(){
+		// form 清空
+		$("#id").val("");
+		$("#id").removeAttr('readonly');
+		$("#name").val("");
+		$("#telephone").val("");
+		$("#station").val("");
+		$("#haspda").removeAttr("checked");
+		$("#standardId").combobox("setValue", "");
 		//alert("增加...");
 		$('#addStaffWindow').window("open");
 	}
@@ -181,8 +189,23 @@
 		
 	});
 
-	function doDblClickRow(){
-		alert("双击表格数据...");
+	function doDblClickRow(rowIndex, rowData){
+		// form 回显
+		$("#id").val(rowData.id);
+		$("#id").attr('readonly','readonly');
+		$("#name").val(rowData.name);
+		$("#telephone").val(rowData.telephone);
+		$("#station").val(rowData.station);
+		// pda 勾选
+		if(rowData.haspda == "1"){			
+			$("#haspda").attr("checked","checked");
+		} else {
+			$("#haspda").removeAttr("checked");
+		}
+		$("#standardId").combobox("setValue", rowData.standard.id);
+		//弹出窗口
+		$('#addStaffWindow').window("open");
+		
 	}
 </script>	
 </head>
@@ -206,23 +229,23 @@
 					<!-- TODO 这里完善收派员添加 table -->
 					<tr>
 						<td>取派员编号</td>
-						<td><input type="text" name="id" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" id="id" name="id" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td>姓名</td>
-						<td><input type="text" name="name" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" id="name" name="name" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td>手机</td>
-						<td><input type="text" name="telephone" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" id="telephone" name="telephone" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td>单位</td>
-						<td><input type="text" name="station" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" id="station" name="station" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td colspan="2">
-						<input type="checkbox" name="haspda" value="1" />
+						<input type="checkbox" id="haspda" name="haspda" value="1" />
 						是否有PDA</td>
 					</tr>
 					<tr>
@@ -232,7 +255,7 @@
 								
 							</select> --> 
 							<!-- 目标model 是 Staff, 提供setStandard 方法，在Standard中提供 setId 的方法 -->
-							<input class="easyui-combobox" name="standard.id"
+							<input class="easyui-combobox" name="standard.id" id="standardId"
 							 data-options="required:true,url:'${pageContext.request.contextPath}/standard_ajaxlist.action',valueField:'id',textField:'name'" />
 						</td>
 					</tr>

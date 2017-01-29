@@ -148,6 +148,26 @@
 	        height: 400,
 	        resizable:false
 	    });
+		//页面加载后，发起Ajax请求
+		/* $.post("${pageContext.request.contextPath}/standard_ajaxlist.action",function(data){
+			//根据返回结果生成下拉列表
+			//传统js
+			/* for(var i = 0; i < data.length; i++){
+				
+			} */
+			// jquery
+			$(data).each(function(){
+				var option = $("<option value='" + this.id + "'>"+ this.name + "</option>");
+				$("#standardList").append(option);
+				
+			});
+			// 	应用 combobox 样式
+			$("#standardList").combobox({
+			
+			});
+			
+			
+		}); */
 		
 	});
 
@@ -198,8 +218,10 @@
 					<tr>
 						<td>取派标准</td>
 						<td>
-							<input class="easyui-combobox" name="standard.id"  
-    							data-options="valueField:'id',textField:'name',url:'json/standard.json'" />  
+							<!-- <select id="standardList">
+								
+							</select> --> 
+							<input class="easyui-combobox" data-options="url:'${pageContext.request.contextPath}/standard_ajaxlist.action',valueField:'id',textField:'name'" />
 						</td>
 					</tr>
 					</table>

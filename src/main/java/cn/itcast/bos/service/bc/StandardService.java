@@ -1,5 +1,7 @@
 package cn.itcast.bos.service.bc;
 
+import java.util.List;
+
 import cn.itcast.bos.domain.bc.Standard;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
@@ -17,5 +19,8 @@ public interface StandardService {
 
 	//批量删除
 	void delBatch(String[] ids);
+
+	//获取标准聊表
+	List<Standard> ajaxlist();
 
 }

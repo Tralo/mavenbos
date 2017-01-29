@@ -1,10 +1,12 @@
 package cn.itcast.bos.web.action.bc;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
@@ -71,6 +73,16 @@ public class StandardAction extends BaseAction implements ModelDriven<Standard>{
 		String[] ids = standard.getId().split(", ");
 		standardService.delBatch(ids);
 		return "delBatchSUCCESS";
+	}
+	
+	public String ajaxlist(){
+		//调用业务层将列表查出
+		List<Standard> standards = standardService.ajaxlist();
+		
+		//将结果转换成json返回
+		ActionContext.getContext().put("standards", standards);
+		
+		return "ajaxlistSUCCESS";
 	}
 	
 	// 属性驱动

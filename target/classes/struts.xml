@@ -60,11 +60,21 @@
 					rows\[\d+\]\.maxweight,
 					rows\[\d+\]\.updatetime,
 					rows\[\d+\]\.user\.username,
-					rows\[\d+\]\.user\.station,
+					rows\[\d+\]\.user\.station
 				</param>
 			</result>
 			<result name="delBatchSUCCESS">
 				/WEB-INF/pages/base/standard.jsp
+			</result>
+			<result name="ajaxlistSUCCESS" type="json">
+				<!-- 配置root参数，指定将值栈哪个数据返回 -->
+				<param name="root">standards</param>
+				<!-- 配置属性includeProperties指定哪些属性返回 -->
+				<param name="includeProperties">
+					<!-- 正则表达式格式 -->
+					\[\d+\]\.id,
+					\[\d+\]\.name
+				</param>
 			</result>
 		</action>
 	</package>

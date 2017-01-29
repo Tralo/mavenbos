@@ -47,4 +47,10 @@ public class StandardSerivceImpl extends BaseService implements StandardService{
 		
 	}
 
+	@Override
+	public List<Standard> ajaxlist() {
+		List<Standard> standards = standardDAO.findByNamedQuery("Standard.ajaxlist");
+		return standards;
+	}
+
 }

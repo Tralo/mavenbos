@@ -8,6 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.page.PageRequestBean;
+import cn.itcast.bos.service.bc.RegionService;
 import cn.itcast.bos.service.bc.StaffService;
 import cn.itcast.bos.service.bc.StandardService;
 import cn.itcast.bos.service.user.UserService;
@@ -31,6 +32,9 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "staffService")
 	protected StaffService staffService;
+	
+	@Resource(name = "regionService")
+	protected RegionService regionService;
 	
 	//属性驱动，分装分页参数
 	private int page;

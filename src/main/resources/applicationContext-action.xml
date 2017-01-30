@@ -16,5 +16,6 @@
 	
 	<bean id="standardAction" class="cn.itcast.bos.web.action.bc.StandardAction" scope="prototype"></bean>
 	<bean id="staffAction" class="cn.itcast.bos.web.action.bc.StaffAction" scope="prototype"></bean>
+	<bean id="regionAction" class="cn.itcast.bos.web.action.bc.RegionAction" scope="prototype"></bean>
 	
 </beans>

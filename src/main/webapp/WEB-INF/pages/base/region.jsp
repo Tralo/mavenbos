@@ -26,6 +26,7 @@
 <script
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/ocupload/jquery.ocupload-1.1.2.js"></script>
 <script type="text/javascript">
 	function doAdd(){
 		$('#addRegionWindow').window("open");
@@ -55,6 +56,10 @@
 		text : '删除',
 		iconCls : 'icon-cancel',
 		handler : doDelete
+	},{
+		id : 'button-import',
+		text : '批量导入',
+		iconCls : 'icon-save'
 	}];
 	// 定义列
 	var columns = [ [ {
@@ -122,6 +127,13 @@
 	        height: 400,
 	        resizable:false
 	    });
+		$('#button-import').upload({
+			name : 'upload',
+			action : '${pageContext.request.contextPath}/region_importXls.action',//表单提交的路径
+			onComplete : function(response){
+				$.messager.alert('信息','文件上传成功','info');
+			}
+		});
 		
 	});
 

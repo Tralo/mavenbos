@@ -22,8 +22,13 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 //		clazz = (Class<T>) type.getActualTypeArguments()[0];
 		this.className = className;
 	}
+	
 
 
+	@Override
+	public void save(T obj) {
+		this.getHibernateTemplate().save(obj);
+	}
 	@Override
 	public void saveOrUpdate(T obj) {
 		this.getHibernateTemplate().saveOrUpdate(obj);
@@ -81,6 +86,7 @@ public class GenericDAOImpl<T> extends HibernateDaoSupport implements GenericDAO
 	public List<T> pageQuery(DetachedCriteria detachedCriteria, int firstResult, int maxResult) {
 		return this.getHibernateTemplate().findByCriteria(detachedCriteria,firstResult,maxResult);
 	}
+
 
 
 }

@@ -16,6 +16,12 @@ public interface GenericDAO<T>{
 
 	
 	/**
+	 * 保存
+	 * @param obj
+	 */
+	public void save(T obj);
+	
+	/**
 	 * 保存或更新
 	 * @param obj
 	 */

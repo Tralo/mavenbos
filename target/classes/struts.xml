@@ -101,6 +101,11 @@
 			<result name="delBatchSUCCESS">/WEB-INF/pages/base/staff.jsp</result>
 			<result name="recoverSUCCESS">/WEB-INF/pages/base/staff.jsp</result>
 		</action>
+		<action name="region_*" class="regionAction" method="{1}">
+			<result name="importXlsSUCCESS" type="json">
+				<param name="root">uploadResultMap</param>
+			</result>
+		</action>
 	</package>
 	
 	<!-- 这个包不需要登陆拦截 -->

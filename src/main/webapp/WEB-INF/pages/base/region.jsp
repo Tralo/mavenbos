@@ -131,7 +131,8 @@
 			name : 'upload',
 			action : '${pageContext.request.contextPath}/region_importXls.action',//表单提交的路径
 			onComplete : function(response){
-				$.messager.alert('信息','文件上传成功','info');
+				var data = eval("(" + response + ")");
+				$.messager.alert('信息',data.msg,'info');
 			}
 		});
 		

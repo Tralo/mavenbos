@@ -105,6 +105,19 @@
 			<result name="importXlsSUCCESS" type="json">
 				<param name="root">uploadResultMap</param>
 			</result>
+			<result name="pageQuerySUCCESS" type="json">
+				<param name="root">pageResponseBean</param>
+				<param name="includeProperties">
+					total,
+					rows\[\d+\]\.id,
+					rows\[\d+\]\.province,
+					rows\[\d+\]\.city,
+					rows\[\d+\]\.district,
+					rows\[\d+\]\.postcode,
+					rows\[\d+\]\.citycode,
+					rows\[\d+\]\.shortcode
+				</param>
+			</result>
 		</action>
 	</package>
 	

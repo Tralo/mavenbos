@@ -111,7 +111,7 @@
 			pageList: [30,50,100],
 			pagination : true,
 			toolbar : toolbar,
-			url : "json/region.json",
+			url : "${pageContext.request.contextPath}/region_pageQuery.action",
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow
@@ -133,6 +133,8 @@
 			onComplete : function(response){
 				var data = eval("(" + response + ")");
 				$.messager.alert('信息',data.msg,'info');
+				// 使 datagrid 数据刷新
+				$('#grid').datagrid('reload');
 			}
 		});
 		

@@ -11,11 +11,14 @@ import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
+import org.hibernate.criterion.DetachedCriteria;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 import cn.itcast.bos.domain.bc.Region;
+import cn.itcast.bos.page.PageRequestBean;
+import cn.itcast.bos.page.PageResponseBean;
 import cn.itcast.bos.web.action.base.BaseAction;
 
 @SuppressWarnings("serial")
@@ -36,6 +39,18 @@ public class RegionAction extends BaseAction implements ModelDriven<Region>{
 	public Region getModel()  {
 		
 		return region;
+	}
+	// 业务方法 --- 分页列表显示
+	public String pageQuery(){
+		// 封装 PageRequestBean
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Region.class);
+		PageRequestBean pageRequestBean = initPageRequestBean(detachedCriteria);
+		// 调用业务层， 查询 PageReponse 对象
+		PageResponseBean pageResponseBean = regionService.pageQuery(pageRequestBean);
+		
+		// 将结果转换成 json
+		ActionContext.getContext().put("pageResponseBean", pageResponseBean);
+		return "pageQuerySUCCESS";
 	}
 	
 	

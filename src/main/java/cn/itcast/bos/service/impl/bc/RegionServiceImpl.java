@@ -1,5 +1,7 @@
 package cn.itcast.bos.service.impl.bc;
 
+import java.util.List;
+
 import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
@@ -16,6 +18,11 @@ public class RegionServiceImpl extends BaseService implements RegionService{
 	@Override
 	public PageResponseBean pageQuery(PageRequestBean pageRequestBean) {
 		return pageQuery(pageRequestBean, regionDAO);
+	}
+
+	@Override
+	public List<Region> findAllRegions() {
+		return regionDAO.findAll();
 	}
 
 }

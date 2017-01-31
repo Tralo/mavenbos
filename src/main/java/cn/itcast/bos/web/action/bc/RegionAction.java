@@ -2,9 +2,8 @@ package cn.itcast.bos.web.action.bc;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -54,7 +53,7 @@ public class RegionAction extends BaseAction implements ModelDriven<Region>{
 		return "pageQuerySUCCESS";
 	}
 	
-	
+	// 业务方法 --- 导入 excel 区域数据
 	public String importXls() throws Exception {
 		//进行 Excel 解析
 		// 1. 工作薄对象
@@ -116,6 +115,14 @@ public class RegionAction extends BaseAction implements ModelDriven<Region>{
 		ActionContext.getContext().put("uploadResultMap", uploadResultMap);
 		
 		return "importXlsSUCCESS";
+	}
+	// 业务方法 -----   获取区域列表数据,转换 json 列表
+	public String ajaxlist(){
+		// 调用业务层，查询所有区域信息
+		List<Region> regions = regionService.findAllRegions();
+		// 将查询结果转换 json 格式
+		ActionContext.getContext().put("regions", regions);
+		return "ajaxlistSUCCESS";
 	}
 
 }

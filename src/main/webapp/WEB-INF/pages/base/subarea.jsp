@@ -223,8 +223,9 @@
 					<tr>
 						<td>选择区域</td>
 						<td>
-							<input class="easyui-combobox" name="region.id"  
-    							data-options="valueField:'id',textField:'name',url:'json/standard.json'" />  
+							<input class="easyui-combobox" data-options="valueField:'id', textField:'info', 
+							url:'${pageContext.request.contextPath }/region_ajaxlist.action', required:true" />
+						
 						</td>
 					</tr>
 					<tr>

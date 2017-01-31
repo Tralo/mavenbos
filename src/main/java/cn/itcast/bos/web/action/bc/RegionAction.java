@@ -19,6 +19,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
+import cn.itcast.bos.utils.PinYin4jUtils;
 import cn.itcast.bos.web.action.base.BaseAction;
 
 @SuppressWarnings("serial")
@@ -82,8 +83,23 @@ public class RegionAction extends BaseAction implements ModelDriven<Region>{
 			region.setCity(row.getCell(2).getStringCellValue());
 			region.setDistrict(row.getCell(3).getStringCellValue());
 			region.setPostcode(row.getCell(4).getStringCellValue());
-			region.setShortcode(row.getCell(5).getStringCellValue());
-			region.setCitycode(row.getCell(6).getStringCellValue());
+			
+			// 使用 pinyin4j 生成简码和城市编码
+			// 连接省市区
+			String str = region.getProvince() + region.getCity() + region.getDistrict();
+			str.replaceAll("省", "").replaceAll("市", "").replaceAll("区", "");
+			// 使用 pinyin4j
+			String[] arr = PinYin4jUtils.getHeadByString(str);
+			StringBuffer sb = new StringBuffer();
+			for(String var : arr){
+				sb.append(var);
+			}
+			
+			region.setShortcode(sb.toString());
+			
+			// 生成城市编码
+			
+			region.setCitycode(PinYin4jUtils.hanziToPinyin(region.getCity(),""));
 			// 保存 region 信息(批量导入如果出错怎么办? )
 			try{
 				regionService.saveRegion(region);

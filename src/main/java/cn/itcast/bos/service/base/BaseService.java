@@ -8,6 +8,7 @@ import cn.itcast.bos.dao.GenericDAO;
 import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
+import cn.itcast.bos.domain.bc.Subarea;
 import cn.itcast.bos.domain.user.User;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
@@ -27,6 +28,9 @@ public abstract class BaseService {
 	
 	@Resource(name = "regionDAO")
 	protected GenericDAO<Region> regionDAO;
+	
+	@Resource(name = "subareaDAO")
+	protected GenericDAO<Subarea> subareaDAO;
 	
 	
 	public <T> PageResponseBean pageQuery(PageRequestBean pageRequestBean,GenericDAO<T> dao) {

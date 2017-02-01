@@ -11,6 +11,7 @@ import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.service.bc.RegionService;
 import cn.itcast.bos.service.bc.StaffService;
 import cn.itcast.bos.service.bc.StandardService;
+import cn.itcast.bos.service.bc.SubareaService;
 import cn.itcast.bos.service.user.UserService;
 
 /**
@@ -35,6 +36,9 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "regionService")
 	protected RegionService regionService;
+	
+	@Resource(name = "subareaService")
+	protected SubareaService subareaService;
 	
 	//属性驱动，分装分页参数
 	private int page;

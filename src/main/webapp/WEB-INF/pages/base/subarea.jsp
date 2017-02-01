@@ -190,6 +190,17 @@
 		$("#btn").click(function(){
 			alert("执行查询...");
 		});
+		// 为添加分区，保存按钮添加点击事件
+		$("#save").click(function(){
+			// 判断 form 校验是否通过
+			if($("#subareaForm").form('validate')){
+				// 通过校验
+				$("#subareaForm").submit(); 
+			} else {
+				// 提示
+				$.messager.alert('警告','表单存在非法数据项无法提交，请重新输入！','warning');
+			}
+		});
 		
 	});
 
@@ -210,8 +221,9 @@
 			</div>
 		</div>
 		
-		<div style="overflow:auto;padding:5px;" border="false">
-			<form>
+		<div style="overflow:auto;padding:5px;" border="false" >
+		<form id="subareaForm" action="${pageContext.request.contextPath }/subarea_saveOrUpdate.action" method="post">
+		
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">分区信息</td>
@@ -223,7 +235,8 @@
 					<tr>
 						<td>选择区域</td>
 						<td>
-							<input class="easyui-combobox" data-options="valueField:'id', textField:'info', 
+							<!-- 提交区域的编号，封装Subarea分区对象 region属性的 id 中 -->
+							<input class="easyui-combobox" name="region.id" data-options="valueField:'id', textField:'info', 
 							url:'${pageContext.request.contextPath }/region_ajaxlist.action', required:true" />
 						
 						</td>

@@ -16,5 +16,6 @@
 	<bean id="standardService" class="cn.itcast.bos.service.impl.bc.StandardServiceImpl"></bean>
 	<bean id="staffService" class="cn.itcast.bos.service.impl.bc.StaffServiceImpl"></bean>
 	<bean id="regionService" class="cn.itcast.bos.service.impl.bc.RegionServiceImpl"></bean>
+	<bean id="subareaService" class="cn.itcast.bos.service.impl.bc.SubareaServiceImpl"></bean>
 	
 </beans>

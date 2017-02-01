@@ -130,6 +130,10 @@
 			</result>
 		</action>
 		
+		<action name="subarea_*" class="subareaAction" method="{1}">
+			<result name="saveOrUpdateSUCCESS"></result>
+		</action>
+		
 	</package>
 	
 	<!-- 这个包不需要登陆拦截 -->

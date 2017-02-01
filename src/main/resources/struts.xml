@@ -131,7 +131,24 @@
 		</action>
 		<!-- 分区管理 -->
 		<action name="subarea_*" class="subareaAction" method="{1}">
+			<!-- 添加分区 -->
 			<result name="saveOrUpdateSUCCESS">/WEB-INF/pages/base/subarea.jsp</result>
+			<!-- 分页列表查询 -->
+			<result name="pageQuerySUCCESS" type="json">
+				<param name="root">pageResponseBean</param>
+				<param name="includeProperties">
+					total,
+					rows\[\d+\]\.id,
+					rows\[\d+\]\.addresskey,
+					rows\[\d+\]\.startnum,
+					rows\[\d+\]\.endnum,
+					rows\[\d+\]\.single,
+					rows\[\d+\]\.position,
+					rows\[\d+\]\.region\.province,
+					rows\[\d+\]\.region\.district,
+					rows\[\d+\]\.region\.city
+				</param>
+			</result>
 		</action>
 		
 	</package>

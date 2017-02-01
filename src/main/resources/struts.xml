@@ -129,9 +129,9 @@
 				</param>
 			</result>
 		</action>
-		
+		<!-- 分区管理 -->
 		<action name="subarea_*" class="subareaAction" method="{1}">
-			<result name="saveOrUpdateSUCCESS"></result>
+			<result name="saveOrUpdateSUCCESS">/WEB-INF/pages/base/subarea.jsp</result>
 		</action>
 		
 	</package>

@@ -17,8 +17,10 @@ public class SubareaAction extends BaseAction implements ModelDriven<Subarea>{
 		return subarea;
 	}
 	
-	
+	// 业务方法 --- 添加或修改子分区
 	public String saveOrUpdate(){
+		subareaService.saveOrUpdate(subarea);
+		
 		return "saveOrUpdateSUCCESS";
 	}
 	

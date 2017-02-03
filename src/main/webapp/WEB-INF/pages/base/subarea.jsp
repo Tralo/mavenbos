@@ -27,6 +27,24 @@
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
+	//导入自定义 jquery函数，将 form 数据转换成 json
+	$.fn.serializeJson=function(){  
+	    var serializeObj={};  
+	    var array=this.serializeArray();  
+	    var str=this.serialize();  
+	    $(array).each(function(){  
+	        if(serializeObj[this.name]){  
+	            if($.isArray(serializeObj[this.name])){  
+	                serializeObj[this.name].push(this.value);  
+	            }else{  
+	                serializeObj[this.name]=[serializeObj[this.name],this.value];  
+	            }  
+	        }else{  
+	            serializeObj[this.name]=this.value;   
+	        }  
+	    });  
+	    return serializeObj;  
+	}; 
 	function doAdd(){
 		$('#addSubareaWindow').window("open");
 	}
@@ -101,6 +119,9 @@
 		width : 120,
 		align : 'center',
 		formatter : function(data,row ,index){
+			if(row.region == null){
+				return null;
+			}
 			return row.region.province;
 		}
 	}, {
@@ -109,6 +130,9 @@
 		width : 120,
 		align : 'center',
 		formatter : function(data,row ,index){
+			if(row.region == null){
+				return null;
+			}
 			return row.region.city;
 		}
 	}, {
@@ -117,6 +141,9 @@
 		width : 120,
 		align : 'center',
 		formatter : function(data,row ,index){
+			if(row.region == null){
+				return null;
+			}
 			return row.region.district;
 		}
 	}, {
@@ -187,8 +214,16 @@
 	        height: 400,
 	        resizable:false
 	    });
+		// 执行条件查询
 		$("#btn").click(function(){
-			alert("执行查询...");
+			// 将form 的数据转换成 json
+			var params = $('#searchForm').serializeJson();
+			// 调用 datagrid 执行查询，在查询是，缓存条件
+			$("#grid").datagrid('load',params);//重新加载 datagrid 指定 url
+			
+			//关闭窗口
+			$('#searchWindow').window('close');
+			
 		});
 		// 为添加分区，保存按钮添加点击事件
 		$("#save").click(function(){
@@ -274,30 +309,31 @@
 	<!-- 查询分区 -->
 	<div class="easyui-window" title="查询分区窗口" id="searchWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="searchForm">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">查询条件</td>
 					</tr>
 					<tr>
 						<td>省</td>
-						<td><input type="text" name="province" class="easyui-validatebox" required="true"/></td>
+						<!-- 将省份信息分装 model 的region属性的province属性 -->
+						<td><input type="text" name="region.province"/></td>
 					</tr>
 					<tr>
 						<td>市</td>
-						<td><input type="text" name="city" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="region.city"/></td>
 					</tr>
 					<tr>
 						<td>区（县）</td>
-						<td><input type="text" name="district" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="region.district"/></td>
 					</tr>
 					<tr>
 						<td>定区编码</td>
-						<td><input type="text" name="decidedzone.id" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="decidedZone.id"/></td>
 					</tr>
 					<tr>
 						<td>关键字</td>
-						<td><input type="text" name="addresskey" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" name="addresskey"/></td>
 					</tr>
 					<tr>
 						<td colspan="2"><a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> </td>

@@ -1,5 +1,9 @@
 package cn.itcast.bos.service.impl.bc;
 
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionContext;
+
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
@@ -34,6 +38,14 @@ public class StaffServiceImpl extends BaseService implements StaffService{
 			Staff staff = staffDAO.findById(id);
 			staff.setDeltag("0");
 		}
+	}
+
+	@Override
+	public List<Staff> findAllNotDeleteStaffs() {
+		// 查询条件为 deltag = 0
+		List<Staff> staffs = staffDAO.findByNamedQuery("Staff.findNoDelete");
+		
+		return staffs;
 	}
 
 	

@@ -292,7 +292,7 @@
 						<td>选择负责人</td>
 						<td>
 							<input class="easyui-combobox" name="region.id"  
-    							data-options="valueField:'id',textField:'name',url:'json/standard.json'" />  
+    							data-options="valueField:'id',textField:'name',url:'${pageContext.request.contextPath }/staff_ajaxlist.action'" />  
 						</td>
 					</tr>
 					<tr height="300">

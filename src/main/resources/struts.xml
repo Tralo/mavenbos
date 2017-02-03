@@ -98,8 +98,17 @@
 					rows\[\d+\]\.standard\.name
 				</param>
 			</result>
+			<!-- 作废取派员 -->
 			<result name="delBatchSUCCESS">/WEB-INF/pages/base/staff.jsp</result>
 			<result name="recoverSUCCESS">/WEB-INF/pages/base/staff.jsp</result>
+			<!-- json列表，添加定区时使用 -->
+			<result name="ajaxlistSUCCESS" type="json">
+				<param name="root">staffs</param>
+				<param name="includeProperties">
+					\[\d+\]\.id,
+					\[\d+\]\.name
+				</param>
+			</result>
 		</action>
 		<action name="region_*" class="regionAction" method="{1}">
 			<result name="importXlsSUCCESS" type="json">

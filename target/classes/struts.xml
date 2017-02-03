@@ -149,6 +149,10 @@
 					rows\[\d+\]\.region\.city
 				</param>
 			</result>
+			<result name="exportXlsSUCCESS" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename=subarea.xls</param>
+			</result>
 		</action>
 		
 	</package>

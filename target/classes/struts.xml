@@ -151,7 +151,7 @@
 			</result>
 			<result name="exportXlsSUCCESS" type="stream">
 				<param name="contentType">application/vnd.ms-excel</param>
-				<param name="contentDisposition">attachment;filename=subarea.xls</param>
+				<param name="contentDisposition">attachment;filename=${downloadFileName}</param>
 			</result>
 		</action>
 		

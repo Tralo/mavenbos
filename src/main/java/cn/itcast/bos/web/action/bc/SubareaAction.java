@@ -2,6 +2,7 @@ package cn.itcast.bos.web.action.bc;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -16,12 +17,14 @@ import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 import cn.itcast.bos.domain.bc.Subarea;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
+import cn.itcast.bos.utils.FileUtils;
 import cn.itcast.bos.web.action.base.BaseAction;
 
 public class SubareaAction extends BaseAction implements ModelDriven<Subarea>{
@@ -83,7 +86,16 @@ public class SubareaAction extends BaseAction implements ModelDriven<Subarea>{
 	}
 	
 	// 业务方法 --- 以 Excel 形式导出数据
-	public String exportXls(){
+	public String exportXls() throws IOException{
+		// 对文件名进行编码
+		String downloadFileName = "分区数据.xls";
+		// 获取用户使用浏览器类型
+		String agent = ServletActionContext.getRequest().getHeader("user-agent");
+		// 对下载文件名编码
+		downloadFileName = FileUtils.encodeDownloadFilename(downloadFileName, agent);
+		
+		// 将结果放入值栈
+		ActionContext.getContext().put("downloadFileName", downloadFileName);
 		
 		return "exportXlsSUCCESS";
 	}

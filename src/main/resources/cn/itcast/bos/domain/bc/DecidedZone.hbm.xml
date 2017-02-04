@@ -23,4 +23,5 @@
             <one-to-many class="cn.itcast.bos.domain.bc.Subarea" />
         </set>
     </class>
+    
 </hibernate-mapping>

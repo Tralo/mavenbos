@@ -158,14 +158,25 @@
 					rows\[\d+\]\.region\.city
 				</param>
 			</result>
+			<!-- 查询结果导出 -->
 			<result name="exportXlsSUCCESS" type="stream">
 				<param name="contentType">application/vnd.ms-excel</param>
 				<param name="contentDisposition">attachment;filename=${downloadFileName}</param>
 			</result>
+			<!-- 关联定区列表 -->
+			<result name="findnoassiociationsSUCCESS" type="json">
+				<param name="root">subareas</param>
+				<param name="includeProperties">
+					\[\d+\]\.subareaId,
+					\[\d+\]\.addresskey,
+					\[\d+\]\.position
+				</param>
+			</result>
 		</action>
 		
 		<!-- 定区管理 -->
-		<action name="decidedZone_*" class="decidedZoneAction" method="{1}">
+		<action name="decidedzone_*" class="decidedZoneAction" method="{1}">
+			<result name="saveOrUpdateSUCCESS">/WEB-INF/pages/base/decidedzone.jsp</result>
 		
 		</action>
 		

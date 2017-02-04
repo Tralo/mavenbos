@@ -212,7 +212,10 @@
 			<result name="findAssociationCustomersSUCCESS" type="json">
 				<param name="root">un_customers</param>
 			</result>
-			
+			<!-- 关联客户到定区 -->
+			<result name="assignedCustomerToDecidedZone">
+				/WEB-INF/pages/base/decidedzone.jsp
+			</result>
 		</action>
 		
 	</package>

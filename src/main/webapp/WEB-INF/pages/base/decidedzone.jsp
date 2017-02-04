@@ -215,7 +215,14 @@
 			$("#noassociationSelect").append($('#associationSelect option:selected'));
 			
 		});
-		
+		// 点击关联客户，提交表单
+		$('#associationBtn').click(function(){
+			// 关联select 中所有 option 选中
+			$('#associationSelect option').attr('selected','selected');
+			// 表单提交
+			$('#customerDecidedZoneId').val($('#grid').datagrid('getSelected').id);
+			$('#customerForm').submit();
+		});
 	});
 
 	function doDblClickRow(rowIndex,rowData){

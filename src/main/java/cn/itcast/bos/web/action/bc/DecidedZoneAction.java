@@ -88,5 +88,19 @@ public class DecidedZoneAction extends BaseAction implements ModelDriven<Decided
 		ActionContext.getContext().put("un_customers", un_customers);
 		return "findAssociationCustomersSUCCESS";
 	}
+	
+	// 业务方法 --- 关联客户到定区
+	public String assignedCustomerToDecidedZone(){
+		// 指定客户到定区
+		customerService.assignedCustomerToDecidedZone(customerIds, decidedZone.getId());
+		return "assignedCustomerToDecidedZone";
+	}
+	
+	private String[] customerIds;
+	public void setCustomerIds(String[] customerIds) {
+		this.customerIds = customerIds;
+	}
+	
+	
 
 }

@@ -6,8 +6,10 @@ import org.hibernate.criterion.DetachedCriteria;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import cn.itcast.bos.domain.bc.DecidedZone;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.page.PageRequestBean;
+import cn.itcast.bos.service.bc.DecidedZoneService;
 import cn.itcast.bos.service.bc.RegionService;
 import cn.itcast.bos.service.bc.StaffService;
 import cn.itcast.bos.service.bc.StandardService;
@@ -39,6 +41,9 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "subareaService")
 	protected SubareaService subareaService;
+	
+	@Resource(name = "decidedZoneService")
+	protected DecidedZoneService decidedZoneService;
 	
 	//属性驱动，分装分页参数
 	private int page;

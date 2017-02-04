@@ -18,5 +18,6 @@
 	<bean id="staffAction" class="cn.itcast.bos.web.action.bc.StaffAction" scope="prototype"></bean>
 	<bean id="regionAction" class="cn.itcast.bos.web.action.bc.RegionAction" scope="prototype"></bean>
 	<bean id="subareaAction" class="cn.itcast.bos.web.action.bc.SubareaAction" scope="prototype"></bean>
+	<bean id="decidedZoneAction" class="cn.itcast.bos.web.action.bc.DecidedZoneAction" scope="prototype"></bean>
 	
 </beans>

@@ -4,6 +4,8 @@ import java.io.ByteArrayOutputStream;
 
 import cn.itcast.bos.domain.bc.DecidedZone;
 import cn.itcast.bos.domain.bc.Subarea;
+import cn.itcast.bos.page.PageRequestBean;
+import cn.itcast.bos.page.PageResponseBean;
 import cn.itcast.bos.service.base.BaseService;
 import cn.itcast.bos.service.bc.DecidedZoneService;
 
@@ -22,6 +24,11 @@ public class DecidedZoneServiceImpl extends BaseService implements DecidedZoneSe
 		}
 		
 		
+	}
+
+	@Override
+	public PageResponseBean pageQuery(PageRequestBean pageRequestBean) {
+		return pageQuery(pageRequestBean, decidedZoneDAO);
 	}
 
 }

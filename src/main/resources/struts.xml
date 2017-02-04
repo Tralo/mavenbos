@@ -172,12 +172,24 @@
 					\[\d+\]\.position
 				</param>
 			</result>
+			
 		</action>
 		
 		<!-- 定区管理 -->
 		<action name="decidedzone_*" class="decidedZoneAction" method="{1}">
 			<result name="saveOrUpdateSUCCESS">/WEB-INF/pages/base/decidedzone.jsp</result>
-		
+			<!-- 获取分页定区数据 -->
+			<result name="pageQuerySUCCESS" type="json">
+				<param name="root">pageResponseBean</param>
+				<param name="includeProperties">
+					total,
+					rows\[\d+\]\.id,
+					rows\[\d+\]\.name,
+					rows\[\d+\]\.staff\.name,
+					rows\[\d+\]\.staff\.telephone,
+					rows\[\d+\]\.staff\.station
+				</param>
+			</result>
 		</action>
 		
 	</package>

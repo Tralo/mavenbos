@@ -91,6 +91,10 @@
 		width : 120,
 		align : 'center',
 		formatter : function(data,row ,index){
+			if(row.staff == null){
+				return "";
+			}
+			
 			return row.staff.name;
 		}
 	}, {
@@ -99,6 +103,9 @@
 		width : 120,
 		align : 'center',
 		formatter : function(data,row ,index){
+			if(row.staff == null){
+				return "";
+			}
 			return row.staff.telephone;
 		}
 	}, {
@@ -107,6 +114,9 @@
 		width : 120,
 		align : 'center',
 		formatter : function(data,row ,index){
+			if(row.staff == null){
+				return "";
+			}
 			return row.staff.station;
 		}
 	} ] ];

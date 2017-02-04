@@ -59,13 +59,13 @@
 			// 发起两次 Ajax 请求
 			$.post('${pageContext.request.contextPath}/decidedzone_findNoAssociationCustomers.action',function(data){
 				$(data).each(function(){
-					var option = $("<option value'"+ this.id +"'>" + this.name + "(" + this.address + ")</option>");
+					var option = $("<option value='"+ this.id +"'>" + this.name + "(" + this.address + ")</option>");
 					$('#noassociationSelect').append(option);
 				});
 			});
 			$.post('${pageContext.request.contextPath}/decidedzone_findAssociationCustomers.action',{id : rowData.id},function(data){
 				$(data).each(function(){
-					var option = $("<option value'"+ this.id +"'>" + this.name + "(" + this.address + ")</option>");
+					var option = $("<option value='"+ this.id +"'>" + this.name + "(" + this.address + ")</option>");
 					$('#associationSelect').append(option);
 				});
 			});
@@ -202,6 +202,18 @@
 			} else {
 				$.messager.alert('警告',"表单存在非法数据项，请重新输入",'warning');
 			}
+		});
+		
+		// 添加左右移动关联客户事件
+		$('#toRight').click(function(){
+			$("#associationSelect").append($('#noassociationSelect option:selected'));
+			
+		});
+		
+		$('#toLeft').click(function(){
+			// 将未关联移到已经关联
+			$("#noassociationSelect").append($('#associationSelect option:selected'));
+			
 		});
 		
 	});

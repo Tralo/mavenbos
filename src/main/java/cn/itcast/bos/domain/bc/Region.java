@@ -104,7 +104,7 @@ public class Region implements java.io.Serializable {
 		this.citycode = citycode;
 	}
 
-	@JSON(serialize = false)
+//	@JSON(serialize = false)
 	public Set getSubareas() {
 		return this.subareas;
 	}

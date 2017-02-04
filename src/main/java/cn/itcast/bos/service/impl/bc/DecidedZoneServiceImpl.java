@@ -1,6 +1,6 @@
 package cn.itcast.bos.service.impl.bc;
 
-import java.io.ByteArrayOutputStream;
+import java.util.Set;
 
 import cn.itcast.bos.domain.bc.DecidedZone;
 import cn.itcast.bos.domain.bc.Subarea;
@@ -29,6 +29,17 @@ public class DecidedZoneServiceImpl extends BaseService implements DecidedZoneSe
 	@Override
 	public PageResponseBean pageQuery(PageRequestBean pageRequestBean) {
 		return pageQuery(pageRequestBean, decidedZoneDAO);
+	}
+
+	@Override
+	public Set<Subarea> attachRegions(String id) {
+		DecidedZone decidedZone = decidedZoneDAO.findById(id);
+		Set<Subarea> subareas = decidedZone.getSubareas();
+		for(Subarea subarea : subareas){
+			subarea.getRegion().getId();
+		}
+		
+		return subareas;
 	}
 
 }

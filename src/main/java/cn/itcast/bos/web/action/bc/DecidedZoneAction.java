@@ -1,11 +1,19 @@
 package cn.itcast.bos.web.action.bc;
 
-import org.hibernate.criterion.DetachedCriteria;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
+
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 import cn.itcast.bos.domain.bc.DecidedZone;
+import cn.itcast.bos.domain.bc.Region;
+import cn.itcast.bos.domain.bc.Subarea;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
 import cn.itcast.bos.web.action.base.BaseAction;
@@ -48,6 +56,17 @@ public class DecidedZoneAction extends BaseAction implements ModelDriven<Decided
 		ActionContext.getContext().put("pageResponseBean", pageResponseBean);
 		
 		return "pageQuerySUCCESS";
+	}
+	
+	// 业务方法 --- 获取关联的
+	public String attachRegions(){
+		Set<Subarea> subareasSet = decidedZoneService.attachRegions(decidedZone.getId());
+		List<Subarea> subareas = new ArrayList<Subarea>(subareasSet);
+		ActionContext.getContext().put("subareas", subareas);
+		System.out.println("subareas:  " + subareas.toString());
+		
+		
+		return "attachRegionsSUCCESS";
 	}
 	
 	

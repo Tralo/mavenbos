@@ -172,7 +172,6 @@
 					\[\d+\]\.position
 				</param>
 			</result>
-			
 		</action>
 		
 		<!-- 定区管理 -->
@@ -190,6 +189,22 @@
 					rows\[\d+\]\.staff\.station
 				</param>
 			</result>
+			
+			<result name="attachRegionsSUCCESS" type="json">
+				<param name="root">subareas</param>
+				<param name="includeProperties">
+					\[\d+\]\.id,
+					\[\d+\]\.region\.province,
+					\[\d+\]\.region\.city,
+					\[\d+\]\.region\.district,
+					\[\d+\]\.addresskey,
+					\[\d+\]\.startnum,
+					\[\d+\]\.endnum,
+					\[\d+\]\.single,
+					\[\d+\]\.position
+				</param>
+			</result>
+			
 		</action>
 		
 	</package>

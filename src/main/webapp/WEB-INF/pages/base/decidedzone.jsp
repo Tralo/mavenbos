@@ -177,14 +177,14 @@
 		
 	});
 
-	function doDblClickRow(){
-		alert("双击表格数据...");
+	function doDblClickRow(rowIndex,rowData){
 		$('#association_subarea').datagrid( {
 			fit : true,
 			border : true,
 			rownumbers : true,
 			striped : true,
-			url : "json/association_subarea.json",
+			url : "${pageContext.request.contextPath}/decidedzone_attachRegions.action",
+			queryParams : {"id" : rowData.id},
 			columns : [ [{
 				field : 'id',
 				title : '分拣编号',

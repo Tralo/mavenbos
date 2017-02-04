@@ -42,9 +42,37 @@
 	function doSearch(){
 		$('#searchWindow').window("open");
 	}
-	
+	// 关联客户的方法
 	function doAssociations(){
-		alert("关联客户");
+		// 显示关联客户的窗口
+		var rowData = $('#grid').datagrid('getSelected');
+		if(rowData == null){
+			// 未选中
+			$.messager.alert('警告','定区关联客户前,必须要先选中一个定区','warning');
+		} else {
+			// 已经选中
+			
+			// 清除原来的选项
+			$("#noassociationSelect").html('');
+			$("#associationSelect").html('');
+			
+			// 发起两次 Ajax 请求
+			$.post('${pageContext.request.contextPath}/decidedzone_findNoAssociationCustomers.action',function(data){
+				$(data).each(function(){
+					var option = $("<option value'"+ this.id +"'>" + this.name + "(" + this.address + ")</option>");
+					$('#noassociationSelect').append(option);
+				});
+			});
+			$.post('${pageContext.request.contextPath}/decidedzone_findAssociationCustomers.action',{id : rowData.id},function(data){
+				$(data).each(function(){
+					var option = $("<option value'"+ this.id +"'>" + this.name + "(" + this.address + ")</option>");
+					$('#associationSelect').append(option);
+				});
+			});
+			
+			// 显示关联客户端的窗口
+			$('#customerWindow').window('open');
+		}
 	}
 	
 	//工具栏
@@ -138,7 +166,8 @@
 			url : "${pageContext.request.contextPath}/decidedzone_pageQuery.action",
 			idField : 'id',
 			columns : columns,
-			onDblClickRow : doDblClickRow
+			onDblClickRow : doDblClickRow,
+			singleSelect: true
 		});
 		
 		// 添加、修改定区
@@ -356,6 +385,36 @@
 					</tr>
 					<tr>
 						<td colspan="2"><a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> </td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<!-- 关联客户窗口 -->
+	<div class="easyui-window" title="关联客户窗口" id="customerWindow" collapsible="false" closed="true" minimizable="false" maximizable="false" style="top:20px;left:200px;width: 400px;height: 300px;">
+		<div style="overflow:auto;padding:5px;" border="false">
+			<form id="customerForm" 
+				method="post" action="${pageContext.request.contextPath }/decidedzone_assignedCustomerToDecidedZone.action">
+				<table class="table-edit" width="80%" align="center">
+					<tr class="title">
+						<td colspan="3">关联客户</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- 定区id 域 -->
+							<input type="hidden" name="id" id="customerDecidedZoneId" />
+							<select id="noassociationSelect" multiple="multiple" size="10"></select>
+						</td>
+						<td>
+							<input type="button" value="》》" id="toRight"><br/>
+							<input type="button" value="《《" id="toLeft">
+						</td>
+						<td>
+							<select id="associationSelect" name="customerIds" multiple="multiple" size="10"></select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3"><a id="associationBtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">关联客户</a> </td>
 					</tr>
 				</table>
 			</form>

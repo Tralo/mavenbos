@@ -15,6 +15,7 @@ import cn.itcast.bos.service.bc.StaffService;
 import cn.itcast.bos.service.bc.StandardService;
 import cn.itcast.bos.service.bc.SubareaService;
 import cn.itcast.bos.service.user.UserService;
+import cn.itcast.crm.service.CustomerService;
 
 /**
  * 公共抽象Action(实现代码复用)
@@ -44,6 +45,10 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "decidedZoneService")
 	protected DecidedZoneService decidedZoneService;
+	
+	@Resource(name = "customerService")
+	protected CustomerService customerService;
+	
 	
 	//属性驱动，分装分页参数
 	private int page;

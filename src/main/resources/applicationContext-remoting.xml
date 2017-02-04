@@ -10,11 +10,11 @@
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
-	<import resource="classpath:applicationContext-common.xml" />
-	<import resource="classpath:applicationContext-dao.xml" />
-	<import resource="classpath:applicationContext-service.xml" />
-	<import resource="classpath:applicationContext-action.xml" />
-	<import resource="classpath:applicationContext-remoting.xml" />
 	
+	<!-- 配置访问CRM的Hessian服务 -->
+	<bean id="customerService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://localhost:8080/crm/customerService"></property>
+		<property name="serviceInterface" value="cn.itcast.crm.service.CustomerService"></property>
+	</bean>
 	
 </beans>

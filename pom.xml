@@ -123,7 +123,13 @@
 		    <artifactId>pinyin4j</artifactId>
 		    <version>2.5.0</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/com.caucho/hessian -->
+		<dependency>
+		    <groupId>com.caucho</groupId>
+		    <artifactId>hessian</artifactId>
+		    <version>4.0.7</version>
+		</dependency>
+				
 		
 	</dependencies>
 	<build>
@@ -153,7 +159,7 @@
             <groupId>org.apache.tomcat.maven</groupId>  
             <artifactId>tomcat7-maven-plugin</artifactId>  
             <configuration>  
-                <port>8080</port>  
+                <port>7070</port>  
                 <path>/mavenbos</path>  
                 <url>http://localhost:8080/manager/text</url>  
                 <username>admin</username>  

@@ -204,6 +204,14 @@
 					\[\d+\]\.position
 				</param>
 			</result>
+			<!-- 查询未关联客户信息 -->
+			<result name="findNoAssociationCustomersSUCCESS" type="json">
+				<param name="root">customers</param>
+			</result>
+			<!-- 查询已经关联客户信息 -->
+			<result name="findAssociationCustomersSUCCESS" type="json">
+				<param name="root">un_customers</param>
+			</result>
 			
 		</action>
 		

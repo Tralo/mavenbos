@@ -8,6 +8,10 @@ public class Subarea implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id; // 编码 （assigned 手动指定）
 	private String addresskey; // 关键字
 	private String startnum; // 起始号

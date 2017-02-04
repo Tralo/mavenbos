@@ -62,7 +62,7 @@ public class DecidedZoneAction extends BaseAction implements ModelDriven<Decided
 	public String attachRegions(){
 		Set<Subarea> subareasSet = decidedZoneService.attachRegions(decidedZone.getId());
 		List<Subarea> subareas = new ArrayList<Subarea>(subareasSet);
-		ActionContext.getContext().put("subareas", subareas);
+		ActionContext.getContext().put("datas", subareas);
 		System.out.println("subareas:  " + subareas.toString());
 		
 		

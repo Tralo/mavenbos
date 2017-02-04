@@ -11,7 +11,7 @@
 
 	<package name="needLogin" extends="json-default">
 		<!-- 注册拦截器 -->
-		<interceptors>
+ 		<interceptors>
 			<interceptor name="login" class="cn.itcast.bos.web.action.interceptor.LoginInterceptor"></interceptor>
 			<!-- 定义新的拦截器栈 -->
 			<interceptor-stack name="loginStack">
@@ -22,7 +22,7 @@
 		
 		<!-- 设置默认拦截器栈 -->
 		<default-interceptor-ref name="loginStack"></default-interceptor-ref>
-		
+ 		
 		<global-results>
 			<result name="login">/login.jsp</result>
 		</global-results>
@@ -191,7 +191,7 @@
 			</result>
 			
 			<result name="attachRegionsSUCCESS" type="json">
-				<param name="root">subareas</param>
+				<param name="root">datas</param>
 				<param name="includeProperties">
 					\[\d+\]\.id,
 					\[\d+\]\.region\.province,

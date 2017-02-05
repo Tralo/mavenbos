@@ -3,10 +3,14 @@ package cn.itcast.bos.web.action.qp;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 import cn.itcast.bos.domain.qp.WorkOrderManage;
+import cn.itcast.bos.page.PageRequestBean;
+import cn.itcast.bos.page.PageResponseBean;
 import cn.itcast.bos.web.action.base.BaseAction;
 /**
  * 工作单管理
@@ -42,6 +46,17 @@ public class WorkOrderManageAction extends BaseAction implements ModelDriven<Wor
 		ActionContext.getContext().put("map", map);
 		
 		return "saveOrUpdateSUCCESS";
+	}
+	
+	// 业务方法 --- 工作单分页查询
+	public String pageQuery(){
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(WorkOrderManage.class);
+		PageRequestBean pageRequestBean = initPageRequestBean(detachedCriteria);
+		
+		
+		PageResponseBean pageResponseBean = workOrderManageService.pageQuery(pageRequestBean);
+		ActionContext.getContext().put("pageResponseBean", pageResponseBean);
+		return "pageQuerySUCCESS";
 	}
 	
 

@@ -162,7 +162,7 @@
 			pageList: [30,50,100],
 			pagination : true,
 			toolbar : toolbar,
-			url :  "",
+			url :  "${pageContext.request.contextPath}/workordermanage_pageQuery.action",
 			idField : 'id',
 			columns : columns,
 			onDblClickRow : doDblClickRow,
@@ -170,8 +170,13 @@
 				editIndex = undefined;
 				// 提交 ajax 请求，将编辑行数据, 以ajax方式，发送到服务器，完成保存
 				$.post("${pageContext.request.contextPath}/workordermanage_saveOrUpdate.action",rowData,function(data){
+					if(data.result == "success"){
+						$('#grid').datagrid('reload');
+					} else {
+						$.messager.alert('信息',data.msg,'error');
+						
+					}
 					
-					$.messager.alert('信息',data.msg,'info');
 				});
 			}
 		});

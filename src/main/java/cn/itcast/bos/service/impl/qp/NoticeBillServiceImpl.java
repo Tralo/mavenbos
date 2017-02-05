@@ -56,13 +56,9 @@ public class NoticeBillServiceImpl extends BaseService implements NoticeBillServ
 		} else {
 			// 查到(自动分单成功)
 			DecidedZone decidedZone = decidedZoneDAO.findById(decidedZoneId);
-			
 			// 通知单
 			noticeBill.setStaff(decidedZone.getStaff());
 			noticeBill.setOrdertype("自动");
-			
-			
-			
 			// 工单信息
 			WorkBill workBill = new WorkBill();
 			workBill.setNoticeBill(noticeBill);

@@ -39,5 +39,10 @@ public class CustomerServiceTest {
 		String[] ids = {"402881ec5a0849bb015a0849bbf80000"};
 		customerService.assignedCustomerToDecidedZone(ids, "ffff");
 	}
+	@Test
+	public void test4(){
+		// 将客户关联到定区上
+		System.out.println(customerService.findDecidedZoneIdByCustomerAddress("北京朝阳"));
+	}
 	
 }

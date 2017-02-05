@@ -11,9 +11,11 @@ import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
 import cn.itcast.bos.domain.bc.Subarea;
 import cn.itcast.bos.domain.qp.NoticeBill;
+import cn.itcast.bos.domain.qp.WorkBill;
 import cn.itcast.bos.domain.user.User;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
+import cn.itcast.crm.service.CustomerService;
 
 /**
  * 业务层抽象（实现业务层代码复用）
@@ -39,6 +41,13 @@ public abstract class BaseService {
 	
 	@Resource(name = "noticeBillDAO")
 	protected GenericDAO<NoticeBill> noticeBillDAO;
+	
+	@Resource(name = "workBillDAO")
+	protected GenericDAO<WorkBill> workBillDAO;
+	
+	
+	@Resource(name = "customerService")
+	protected CustomerService customerService;
 	
 	
 	public <T> PageResponseBean pageQuery(PageRequestBean pageRequestBean,GenericDAO<T> dao) {

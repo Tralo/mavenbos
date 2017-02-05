@@ -171,6 +171,7 @@
 				// 提交 ajax 请求，将编辑行数据, 以ajax方式，发送到服务器，完成保存
 				$.post("${pageContext.request.contextPath}/workordermanage_saveOrUpdate.action",rowData,function(data){
 					
+					$.messager.alert('信息',data.msg,'info');
 				});
 			}
 		});

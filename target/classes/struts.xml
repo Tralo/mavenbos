@@ -221,6 +221,11 @@
 		<action name="noticebill_*" class="noticeBillAction" method="{1}">
 			<result name="saveSUCCESS">/WEB-INF/pages/qupai/noticebill_add.jsp</result>
 		</action>
+		<action name="workordermanage_*" class="workOrderManageAction" method="{1}">
+			<result name="saveOrUpdateSUCCESS" type="json">
+				<param name="root">map</param>
+			</result>
+		</action>
 		
 	</package>
 	
@@ -232,5 +237,7 @@
 			<result type="redirect">/index.jsp</result>
 		</action>
 	</package>
+
+	
 
 </struts>

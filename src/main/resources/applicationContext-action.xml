@@ -20,5 +20,6 @@
 	<bean id="subareaAction" class="cn.itcast.bos.web.action.bc.SubareaAction" scope="prototype"></bean>
 	<bean id="decidedZoneAction" class="cn.itcast.bos.web.action.bc.DecidedZoneAction" scope="prototype"></bean>
 	<bean id="noticeBillAction" class="cn.itcast.bos.web.action.qp.NoticeBillAction" scope="prototype"></bean>
+	<bean id="workOrderManageAction" class="cn.itcast.bos.web.action.qp.WorkOrderManageAction" scope="prototype"></bean>
 	
 </beans>

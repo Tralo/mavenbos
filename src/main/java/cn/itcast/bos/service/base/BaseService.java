@@ -12,6 +12,7 @@ import cn.itcast.bos.domain.bc.Standard;
 import cn.itcast.bos.domain.bc.Subarea;
 import cn.itcast.bos.domain.qp.NoticeBill;
 import cn.itcast.bos.domain.qp.WorkBill;
+import cn.itcast.bos.domain.qp.WorkOrderManage;
 import cn.itcast.bos.domain.user.User;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
@@ -48,6 +49,9 @@ public abstract class BaseService {
 	
 	@Resource(name = "customerService")
 	protected CustomerService customerService;
+	
+	@Resource(name = "workOrderManageDAO")
+	protected GenericDAO<WorkOrderManage> workOrderManageDAO;
 	
 	
 	public <T> PageResponseBean pageQuery(PageRequestBean pageRequestBean,GenericDAO<T> dao) {

@@ -15,6 +15,7 @@ import cn.itcast.bos.service.bc.StaffService;
 import cn.itcast.bos.service.bc.StandardService;
 import cn.itcast.bos.service.bc.SubareaService;
 import cn.itcast.bos.service.qp.NoticeBillService;
+import cn.itcast.bos.service.qp.WorkOrderManageService;
 import cn.itcast.bos.service.user.UserService;
 import cn.itcast.crm.service.CustomerService;
 
@@ -52,6 +53,9 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "noticeBillService")
 	protected NoticeBillService noticeBillService;
+	
+	@Resource(name = "workOrderManageService")
+	protected WorkOrderManageService workOrderManageService;
 	
 	
 	//属性驱动，分装分页参数

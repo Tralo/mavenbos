@@ -218,6 +218,10 @@
 			</result>
 		</action>
 		
+		<action name="noticeBill_*" class="noticeBillAction" method="{1}">
+		
+		</action>
+		
 	</package>
 	
 	<!-- 这个包不需要登陆拦截 -->

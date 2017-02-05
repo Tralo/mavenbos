@@ -10,6 +10,7 @@ import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.domain.bc.Standard;
 import cn.itcast.bos.domain.bc.Subarea;
+import cn.itcast.bos.domain.qp.NoticeBill;
 import cn.itcast.bos.domain.user.User;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
@@ -35,6 +36,9 @@ public abstract class BaseService {
 	
 	@Resource(name = "decidedZoneDAO")
 	protected GenericDAO<DecidedZone> decidedZoneDAO;
+	
+	@Resource(name = "noticeBillDAO")
+	protected GenericDAO<NoticeBill> noticeBillDAO;
 	
 	
 	public <T> PageResponseBean pageQuery(PageRequestBean pageRequestBean,GenericDAO<T> dao) {

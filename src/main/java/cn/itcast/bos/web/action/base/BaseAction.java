@@ -14,6 +14,7 @@ import cn.itcast.bos.service.bc.RegionService;
 import cn.itcast.bos.service.bc.StaffService;
 import cn.itcast.bos.service.bc.StandardService;
 import cn.itcast.bos.service.bc.SubareaService;
+import cn.itcast.bos.service.qp.NoticeBillService;
 import cn.itcast.bos.service.user.UserService;
 import cn.itcast.crm.service.CustomerService;
 
@@ -48,6 +49,9 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "customerService")
 	protected CustomerService customerService;
+	
+	@Resource(name = "noticeBillService")
+	protected NoticeBillService noticeBillService;
 	
 	
 	//属性驱动，分装分页参数

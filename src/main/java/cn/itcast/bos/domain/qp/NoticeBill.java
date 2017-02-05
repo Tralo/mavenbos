@@ -15,6 +15,10 @@ public class NoticeBill implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String id; // 编号 （默认 assigned 将 hbm生成策略改为 uuid）
 	private User user; // 业务受理人
 	private Staff staff; // 取派员

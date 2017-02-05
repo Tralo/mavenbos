@@ -2,15 +2,26 @@ package cn.itcast.bos.domain.qp;
 
 import java.util.Date;
 
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.DocumentId;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.wltea.analyzer.lucene.IKAnalyzer;
+
 /**
  * 工作单 WorkOrderManage entity. @author MyEclipse Persistence Tools
  */
+@Indexed
+@Analyzer(impl = IKAnalyzer.class)
 public class WorkOrderManage implements java.io.Serializable {
 
 	// Fields
 	// 快速录入 需要基本信息
+	@DocumentId
 	private String id; // 工作单编号 (手动录入 assigned )
+	@Field
 	private String arrivecity; // 到达城市
+	@Field
 	private String product; // 货物名称
 	private Integer num; // 数量
 	private Double weight; // 重量

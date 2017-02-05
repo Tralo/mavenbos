@@ -63,24 +63,12 @@
 			<version>1.0.1.Final</version>
 		</dependency>
 		<!-- Servlet & Jsp -->
-		<!-- <dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>3.0-alpha-1</version>
-			<scope>provided</scope> 只在编译和测试环境下使用，不参与打包运行，默认值Runtime
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.0</version>
-			<scope>provided</scope>
-		</dependency> -->
-		<!-- <dependency>
-		    <groupId>org.apache.tomcat</groupId>
-		    <artifactId>tomcat-jsp-api</artifactId>
-		    <version>8.0.17</version>
-		    <scope>provided</scope>
-		</dependency> -->
+		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>servlet-api</artifactId> 
+			<version>3.0-alpha-1</version> <scope>provided</scope> 只在编译和测试环境下使用，不参与打包运行，默认值Runtime 
+			</dependency> <dependency> <groupId>javax.servlet</groupId> <artifactId>jsp-api</artifactId> 
+			<version>2.0</version> <scope>provided</scope> </dependency> -->
+		<!-- <dependency> <groupId>org.apache.tomcat</groupId> <artifactId>tomcat-jsp-api</artifactId> 
+			<version>8.0.17</version> <scope>provided</scope> </dependency> -->
 		<!-- log4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -113,60 +101,59 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>
-		    <groupId>org.apache.poi</groupId>
-		    <artifactId>poi</artifactId>
-		    <version>3.9</version>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.belerweb/pinyin4j -->
 		<dependency>
-		    <groupId>com.belerweb</groupId>
-		    <artifactId>pinyin4j</artifactId>
-		    <version>2.5.0</version>
+			<groupId>com.belerweb</groupId>
+			<artifactId>pinyin4j</artifactId>
+			<version>2.5.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.caucho/hessian -->
 		<dependency>
-		    <groupId>com.caucho</groupId>
-		    <artifactId>hessian</artifactId>
-		    <version>4.0.7</version>
+			<groupId>com.caucho</groupId>
+			<artifactId>hessian</artifactId>
+			<version>4.0.7</version>
 		</dependency>
-				
-		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search</artifactId>
+			<version>3.4.2.Final</version>
+		</dependency>
+		<!-- 导入 IK分词器 -->
+		<dependency>
+			<groupId>ik</groupId>
+			<artifactId>ik</artifactId>
+			<version>1.0</version>
+			<systemPath>/Users/poirot/git/mavenbos/src/main/webapp/WEB-INF/lib/IKAnalyzer2012_u6.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+
+
+
 	</dependencies>
 	<build>
 		<plugins>
-			  <!-- <plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
+			<!-- <plugin> <artifactId>maven-compiler-plugin</artifactId> <configuration> 
+				<source>1.6</source> <target>1.6</target> </configuration> </plugin> 使用 plugin 
+				配置tomcat-maven-plugin <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>tomcat7-maven-plugin</artifactId> 
+				<version>1.1</version> 对插件进行配置 <configuration> 内嵌插件 端口 <port>8080</port> 
+				远程发布 <url>http://localhost:8080/manager/text</url> <server>myserver</server> 
+				</configuration> </plugin> -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<port>7070</port>
+					<path>/mavenbos</path>
+					<url>http://localhost:8080/manager/text</url>
+					<username>admin</username>
+					<password>admin</password>
 				</configuration>
 			</plugin>
-			使用 plugin 配置tomcat-maven-plugin
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>1.1</version>
-				对插件进行配置
-				<configuration>
-					内嵌插件 端口
-					<port>8080</port>
-					远程发布
-					<url>http://localhost:8080/manager/text</url>
-					<server>myserver</server>
-				</configuration>
-			</plugin>   -->
-			<plugin>  
-            <groupId>org.apache.tomcat.maven</groupId>  
-            <artifactId>tomcat7-maven-plugin</artifactId>  
-            <configuration>  
-                <port>7070</port>  
-                <path>/mavenbos</path>  
-                <url>http://localhost:8080/manager/text</url>  
-                <username>admin</username>  
-                <password>admin</password>  
-            </configuration>  
-        </plugin>  
-			 
+
 		</plugins>
 	</build>
 </project>

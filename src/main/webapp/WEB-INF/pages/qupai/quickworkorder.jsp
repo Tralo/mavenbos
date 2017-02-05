@@ -183,7 +183,7 @@
 	});
 
 	function doDblClickRow(rowIndex, rowData){
-		alert("双击表格数据...");
+		//alert("双击表格数据...");
 		console.info(rowIndex);
 		$('#grid').datagrid('beginEdit',rowIndex);
 		editIndex = rowIndex;

@@ -27,19 +27,25 @@
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
+	// 成员变量，用来保存当前正在编辑行的行号，控制用户当前只能同时编辑一行
 	var editIndex ;
-	
+	// 点击新增一行
 	function doAdd(){
+		// 判断当前是否正在编辑
 		if(editIndex != undefined){
-			$("#grid").datagrid('endEdit',editIndex);
+			$("#grid").datagrid('endEdit',editIndex);// 结束当前行编辑
+			// 触发onAfterEdit函数
 		}
+		// 判断当前已经没有编辑行
 		if(editIndex==undefined){
-			//alert("快速添加电子单...");
+			// 在数据表格第一行，出入一个空行
 			$("#grid").datagrid('insertRow',{
 				index : 0,
 				row : {}
 			});
+			// 打开第一行编辑状态
 			$("#grid").datagrid('beginEdit',0);
+			// 将编辑的行号，保存成员变量
 			editIndex = 0;
 		}
 	}
@@ -161,8 +167,11 @@
 			columns : columns,
 			onDblClickRow : doDblClickRow,
 			onAfterEdit : function(rowIndex, rowData, changes){
-				console.info(rowData);
 				editIndex = undefined;
+				// 提交 ajax 请求，将编辑行数据, 以ajax方式，发送到服务器，完成保存
+				$.post("${pageContext.request.contextPath}/workordermanage_saveOrUpdate.action",rowData,function(data){
+					
+				});
 			}
 		});
 	});

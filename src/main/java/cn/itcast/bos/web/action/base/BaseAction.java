@@ -59,8 +59,8 @@ public abstract class BaseAction extends ActionSupport{
 	
 	
 	//属性驱动，分装分页参数
-	private int page;
-	private int rows;
+	protected int page;
+	protected int rows;
 	public void setPage(int page) {
 		this.page = page;
 	}

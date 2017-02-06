@@ -207,6 +207,7 @@
 			conditionName: name,
 			conditionValue: value
 		});
+		editIndex = undefined;
 	}
 	
 </script>

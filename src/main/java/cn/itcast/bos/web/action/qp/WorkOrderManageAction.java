@@ -50,14 +50,32 @@ public class WorkOrderManageAction extends BaseAction implements ModelDriven<Wor
 	
 	// 业务方法 --- 工作单分页查询
 	public String pageQuery(){
-		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(WorkOrderManage.class);
-		PageRequestBean pageRequestBean = initPageRequestBean(detachedCriteria);
+		if(conditionName != null && conditionName.trim().length() > 0 && conditionValue != null && conditionValue.trim().length() > 0){
+			// 有条件所有，结合 lucence
+			PageResponseBean pageResponseBean = workOrderManageService.queryByLuence(conditionName,conditionValue,page,rows);
+			ActionContext.getContext().put("pageResponseBean", pageResponseBean);
+		} else {
+			// 无查询条件
+			// 无条件查询所有
+			DetachedCriteria detachedCriteria = DetachedCriteria.forClass(WorkOrderManage.class);
+			PageRequestBean pageRequestBean = initPageRequestBean(detachedCriteria);
+			
+			//调用所有
+			PageResponseBean pageResponseBean = workOrderManageService.pageQuery(pageRequestBean);
+			ActionContext.getContext().put("pageResponseBean", pageResponseBean);
+		}
 		
-		
-		PageResponseBean pageResponseBean = workOrderManageService.pageQuery(pageRequestBean);
-		ActionContext.getContext().put("pageResponseBean", pageResponseBean);
 		return "pageQuerySUCCESS";
 	}
 	
+	private String conditionName;
+	private String conditionValue;
 
+	public void setConditionName(String conditionName) {
+		this.conditionName = conditionName;
+	}
+
+	public void setConditionValue(String conditionValue) {
+		this.conditionValue = conditionValue;
+	}
 }

@@ -1,5 +1,7 @@
 package cn.itcast.bos.service.impl.qp;
 
+import org.hibernate.Session;
+
 import cn.itcast.bos.domain.qp.WorkOrderManage;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
@@ -17,6 +19,11 @@ public class WorkOrderManageServiceImpl extends BaseService implements WorkOrder
 	@Override
 	public PageResponseBean pageQuery(PageRequestBean pageRequestBean) {
 		return pageQuery(pageRequestBean, workOrderManageDAO);
+	}
+	@Override
+	public PageResponseBean queryByLuence(String conditionName, String conditionValue, int page, int rows) {
+		
+		return workOrderManageDAO.queryByLucene(conditionName,conditionValue,page,rows);
 	}
 
 }

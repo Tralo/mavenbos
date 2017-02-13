@@ -7,6 +7,14 @@
 	<packaging>war</packaging>
 	<name>mavenbos</name>
 	<description>宅急送物流管理项目</description>
+	<repositories>
+		<!--JBPM依赖包 maven2资源库 -->
+		<repository>
+			<id>Jboss-JBPM-Repositories</id>
+			<name>JbossJBPM</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<!-- spring 3.2 -->
 		<dependency>
@@ -130,9 +138,44 @@
 			<systemPath>/Users/poirot/git/mavenbos/src/main/webapp/WEB-INF/lib/IKAnalyzer2012_u6.jar</systemPath>
 			<scope>system</scope>
 		</dependency>
-
-
-
+		<!-- 导入JBPM的坐标 -->
+		<dependency>
+			<groupId>org.jbpm.jbpm4</groupId>
+			<artifactId>jbpm-api</artifactId>
+			<version>4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm.jbpm4</groupId>
+			<artifactId>jbpm-jpdl</artifactId>
+			<version>4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm.jbpm4</groupId>
+			<artifactId>jbpm-pvm</artifactId>
+			<version>4.4</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-jdk14</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm.jbpm4</groupId>
+			<artifactId>jbpm-log</artifactId>
+			<version>4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm.jbpm4</groupId>
+			<artifactId>jbpm-bpmn</artifactId>
+			<version>4.4</version>
+		</dependency>
+		<!-- javamail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

@@ -48,12 +48,6 @@
 						<td colspan="2">功能权限信息</td>
 					</tr>
 					<tr>
-						<td width="200">编号</td>
-						<td>
-							<input type="text" name="id" class="easyui-validatebox" data-options="required:true" />						
-						</td>
-					</tr>
-					<tr>
 						<td>名称</td>
 						<td><input type="text" name="name" class="easyui-validatebox" data-options="required:true" /></td>
 					</tr>
@@ -79,7 +73,8 @@
 					<tr>
 						<td>父功能点</td>
 						<td>
-							<input name="parentFunction.id" class="easyui-combobox" data-options="valueField:'id',textField:'info',url:''"/>
+							<input name="parentFunction.id" class="easyui-combobox" 
+							data-options="valueField:'id',textField:'info',url:'${pageContext.request.contextPath }/function_ajaxlist.action'"/>
 						</td>
 					</tr>
 					<tr>

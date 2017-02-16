@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import cn.itcast.bos.domain.bc.DecidedZone;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.page.PageRequestBean;
+import cn.itcast.bos.service.auth.FunctionService;
 import cn.itcast.bos.service.bc.DecidedZoneService;
 import cn.itcast.bos.service.bc.RegionService;
 import cn.itcast.bos.service.bc.StaffService;
@@ -57,6 +58,8 @@ public abstract class BaseAction extends ActionSupport{
 	@Resource(name = "workOrderManageService")
 	protected WorkOrderManageService workOrderManageService;
 	
+	@Resource(name = "functionService")
+	protected FunctionService functionService;
 	
 	//属性驱动，分装分页参数
 	protected int page;

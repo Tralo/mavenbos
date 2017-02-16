@@ -20,5 +20,6 @@
 	<bean id="decidedZoneService" class="cn.itcast.bos.service.impl.bc.DecidedZoneServiceImpl"></bean>
 	<bean id="noticeBillService" class="cn.itcast.bos.service.impl.qp.NoticeBillServiceImpl"></bean>
 	<bean id="workOrderManageService" class="cn.itcast.bos.service.impl.qp.WorkOrderManageServiceImpl"></bean>
+	<bean id="functionService" class="cn.itcast.bos.service.impl.auth.FunctionServiceImpl"></bean>
 	
 </beans>

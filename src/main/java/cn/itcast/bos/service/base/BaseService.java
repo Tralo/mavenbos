@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import cn.itcast.bos.dao.GenericDAO;
+import cn.itcast.bos.domain.auth.Function;
 import cn.itcast.bos.domain.bc.DecidedZone;
 import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
@@ -52,6 +53,9 @@ public abstract class BaseService {
 	
 	@Resource(name = "workOrderManageDAO")
 	protected GenericDAO<WorkOrderManage> workOrderManageDAO;
+	
+	@Resource(name = "functionDAO")
+	protected GenericDAO<Function> functionDAO;
 	
 	
 	public <T> PageResponseBean pageQuery(PageRequestBean pageRequestBean,GenericDAO<T> dao) {

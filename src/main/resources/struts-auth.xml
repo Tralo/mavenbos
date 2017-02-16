@@ -16,6 +16,18 @@
 			</result>
 			<!-- 添加权限 -->
 			<result name="saveSuccess">/WEB-INF/pages/admin/function.jsp</result>
+			<!-- 权限数据查询 -->
+			<result name="listSuccess" type="json">
+				<param name="root">functions</param>
+				<param name="includeProperties">
+					\[\d+\]\.id,
+					\[\d+\]\.name,
+					\[\d+\]\.description,
+					\[\d+\]\.zindex,
+					\[\d+\]\.generateMenu,
+					\[\d+\]\.page
+				</param>
+			</result>
 		</action>
 
 	</package>

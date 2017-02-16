@@ -2,11 +2,8 @@ package cn.itcast.bos.web.action.auth;
 
 import java.util.List;
 
-import org.eclipse.jdt.internal.compiler.lookup.ReductionResult;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
-import com.opensymphony.xwork2.config.entities.ActionConfig;
 
 import cn.itcast.bos.domain.auth.Function;
 import cn.itcast.bos.web.action.base.BaseAction;
@@ -35,6 +32,16 @@ public class FunctionAction extends BaseAction implements ModelDriven<Function>{
 	public String save(){
 		functionService.saveFunction(function);
 		return "saveSuccess";
+	}
+	
+	
+	public String list(){
+		
+		List<Function> functions = functionService.listAll();
+		// 放入值栈
+		ActionContext.getContext().put("functions", functions);
+		
+		return "listSuccess";
 	}
 
 }

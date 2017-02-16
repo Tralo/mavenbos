@@ -10,6 +10,7 @@ import cn.itcast.bos.domain.bc.DecidedZone;
 import cn.itcast.bos.domain.bc.Staff;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.service.auth.FunctionService;
+import cn.itcast.bos.service.auth.RoleService;
 import cn.itcast.bos.service.bc.DecidedZoneService;
 import cn.itcast.bos.service.bc.RegionService;
 import cn.itcast.bos.service.bc.StaffService;
@@ -18,6 +19,7 @@ import cn.itcast.bos.service.bc.SubareaService;
 import cn.itcast.bos.service.qp.NoticeBillService;
 import cn.itcast.bos.service.qp.WorkOrderManageService;
 import cn.itcast.bos.service.user.UserService;
+import cn.itcast.bos.web.action.auth.RoleAction;
 import cn.itcast.crm.service.CustomerService;
 
 /**
@@ -60,6 +62,9 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "functionService")
 	protected FunctionService functionService;
+	
+	@Resource(name = "roleService")
+	protected RoleService roleService;
 	
 	//属性驱动，分装分页参数
 	protected int page;

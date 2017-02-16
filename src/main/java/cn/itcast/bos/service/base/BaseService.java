@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import cn.itcast.bos.dao.GenericDAO;
 import cn.itcast.bos.domain.auth.Function;
+import cn.itcast.bos.domain.auth.Role;
 import cn.itcast.bos.domain.bc.DecidedZone;
 import cn.itcast.bos.domain.bc.Region;
 import cn.itcast.bos.domain.bc.Staff;
@@ -56,6 +57,10 @@ public abstract class BaseService {
 	
 	@Resource(name = "functionDAO")
 	protected GenericDAO<Function> functionDAO;
+	
+	
+	@Resource(name = "roleDAO")
+	protected GenericDAO<Role> roleDAO;
 	
 	
 	public <T> PageResponseBean pageQuery(PageRequestBean pageRequestBean,GenericDAO<T> dao) {

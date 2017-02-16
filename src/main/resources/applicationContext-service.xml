@@ -21,5 +21,6 @@
 	<bean id="noticeBillService" class="cn.itcast.bos.service.impl.qp.NoticeBillServiceImpl"></bean>
 	<bean id="workOrderManageService" class="cn.itcast.bos.service.impl.qp.WorkOrderManageServiceImpl"></bean>
 	<bean id="functionService" class="cn.itcast.bos.service.impl.auth.FunctionServiceImpl"></bean>
+	<bean id="roleService" class="cn.itcast.bos.service.impl.auth.RoleServiceImpl"></bean>
 	
 </beans>

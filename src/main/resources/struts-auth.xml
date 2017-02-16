@@ -38,6 +38,9 @@
 				</param>
 			</result>
 		</action>
-
+		<!-- 角色管理 -->
+		<action name="role_*" class="roleAction" method="{1}">
+		
+		</action>
 	</package>
 </struts>

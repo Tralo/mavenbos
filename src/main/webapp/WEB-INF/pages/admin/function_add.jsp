@@ -30,7 +30,12 @@
 	$(function(){
 		// 点击保存
 		$('#save').click(function(){
-			location.href='${pageContext.request.contextPath}/page_admin_function.action';
+			// 先判读啊 form 是否通过校验，如果通过提交表单
+			if($("#functionForm").form('validate')){
+				$('#functionForm').submit();
+			} else {
+				$.messager.alert('警告','表单存在非法数据项!','warning');
+			}
 		});
 	});
 </script>	
@@ -42,7 +47,7 @@
 	</div>
 </div>
 <div data-options="region:'center'">
-	<form id="functionForm" method="post">
+	<form id="functionForm" method="post" action="${pageContext.request.contextPath }/function_save.action">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">功能权限信息</td>
@@ -74,7 +79,7 @@
 						<td>父功能点</td>
 						<td>
 							<input name="parentFunction.id" class="easyui-combobox" 
-							data-options="valueField:'id',textField:'info',url:'${pageContext.request.contextPath }/function_ajaxlist.action'"/>
+							data-options="valueField:'id',textField:'info',url:'${pageContext.request.contextPath }/function_ajaxlist.action',editable:false"/>
 						</td>
 					</tr>
 					<tr>

@@ -28,5 +28,13 @@ public class FunctionAction extends BaseAction implements ModelDriven<Function>{
 		
 		return "ajaxlistSUCCESS";
 	}
+	
+	/**
+	 * 保存权限信息
+	 */
+	public String save(){
+		functionService.saveFunction(function);
+		return "saveSuccess";
+	}
 
 }

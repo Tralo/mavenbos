@@ -12,4 +12,11 @@ public interface FunctionService {
 	 */
 	List<Function> listAll();
 
+	
+	/**
+	 * 保存权限信息
+	 * @param function
+	 */
+	void saveFunction(Function function);
+
 }

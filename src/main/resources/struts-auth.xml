@@ -4,8 +4,9 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="auth" extends="needLogin">
+		<!-- 权限管理 -->
 		<action name="function_*" class="functionAction" method="{1}">
-			<!-- 权限管理 -->
+			<!-- 权限列表 -->
 			<result name="ajaxlistSUCCESS" type="json">
 				<param name="root">functions</param>
 				<param name="includeProperties">
@@ -13,6 +14,8 @@
 					\[\d+\]\.info
 				</param>
 			</result>
+			<!-- 添加权限 -->
+			<result name="saveSuccess">/WEB-INF/pages/admin/function.jsp</result>
 		</action>
 
 	</package>

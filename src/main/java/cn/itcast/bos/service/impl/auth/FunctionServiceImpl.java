@@ -13,4 +13,18 @@ public class FunctionServiceImpl extends BaseService implements FunctionService 
 		return functionDAO.findAll();
 	}
 
+	@Override
+	public void saveFunction(Function function) {
+		// 防止 "" 的 id 外键关联
+		if(function.getParentFunction() != null 
+				&& function.getParentFunction().getId() != null 
+				&& function.getParentFunction().getId().trim().length() == 0){
+			function.setParentFunction(null);
+		}
+		
+		
+		functionDAO.save(function);
+		
+	}
+
 }

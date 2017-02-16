@@ -34,6 +34,8 @@
 		<action name="page_*_*">
 			<result type="dispatcher">/WEB-INF/pages/{1}/{2}.jsp</result>
 		</action>
+		
+		
 	</package>
 	
 

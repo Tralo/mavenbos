@@ -5,6 +5,14 @@
 <struts>
 	<package name="auth" extends="needLogin">
 		<action name="function_*" class="functionAction" method="{1}">
+			<!-- 权限管理 -->
+			<result name="ajaxlistSUCCESS" type="json">
+				<param name="root">functions</param>
+				<param name="includeProperties">
+					\[\d+\]\.id,
+					\[\d+\]\.info
+				</param>
+			</result>
 		</action>
 
 	</package>

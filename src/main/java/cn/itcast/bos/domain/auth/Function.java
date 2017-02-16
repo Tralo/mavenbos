@@ -94,5 +94,9 @@ public class Function{
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+	public String getInfo(){
+		
+		return name + "(" + id + ")";
+	}
 	
 }

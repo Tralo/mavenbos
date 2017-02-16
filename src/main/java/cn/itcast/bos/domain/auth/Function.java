@@ -99,4 +99,8 @@ public class Function{
 		return name + "(" + id + ")";
 	}
 	
+	public String getParentId(){
+		return parentFunction == null ? "0" : parentFunction.getId();
+	}
+	
 }

@@ -2,6 +2,8 @@ package cn.itcast.bos.service.impl.auth;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 import cn.itcast.bos.domain.auth.Function;
 import cn.itcast.bos.service.auth.FunctionService;
 import cn.itcast.bos.service.base.BaseService;
@@ -21,10 +23,12 @@ public class FunctionServiceImpl extends BaseService implements FunctionService 
 				&& function.getParentFunction().getId().trim().length() == 0){
 			function.setParentFunction(null);
 		}
-		
-		
 		functionDAO.save(function);
-		
+	}
+
+	@Override
+	public List<Function> findTreeData(DetachedCriteria detachedCriteria) {
+		return functionDAO.findByCriteria(detachedCriteria);
 	}
 
 }

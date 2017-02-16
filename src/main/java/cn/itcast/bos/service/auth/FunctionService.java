@@ -2,6 +2,8 @@ package cn.itcast.bos.service.auth;
 
 import java.util.List;
 
+import org.hibernate.criterion.DetachedCriteria;
+
 import cn.itcast.bos.domain.auth.Function;
 
 public interface FunctionService {
@@ -18,5 +20,11 @@ public interface FunctionService {
 	 * @param function
 	 */
 	void saveFunction(Function function);
+
+	/**
+	 * 查询树节点数据
+	 * @return
+	 */
+	List<Function> findTreeData(DetachedCriteria detachedCriteria);
 
 }

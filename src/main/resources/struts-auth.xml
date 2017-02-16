@@ -28,6 +28,15 @@
 					\[\d+\]\.page
 				</param>
 			</result>
+			<!-- 授权树 -->
+			<result name="treedataSUCCESS" type="json">
+				<param name="root">functions</param>
+				<param name="includeProperties">
+					\[\d+\]\.id,
+					\[\d+\]\.name,
+					\[\d+\]\.parentId
+				</param>
+			</result>
 		</action>
 
 	</package>

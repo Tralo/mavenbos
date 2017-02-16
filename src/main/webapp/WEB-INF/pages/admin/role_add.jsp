@@ -65,11 +65,23 @@
 		});
 
 		// 点击保存
-		$('#save')
-				.click(
-						function() {
-							location.href = '${pageContext.request.contextPath}/page_admin_privilege.action';
-						});
+		$('#save').click(function() {
+			if($('#roleForm').form('validate')){
+				// 获取勾选的 tree 节点
+				var treeObj = $.fn.zTree.getZTreeObj("functionTree");
+				var nodes = treeObj.getCheckedNodes(true);
+				// 将多个勾选id 转换为 字符串, 用,分隔
+				var ids = [];
+				for(var i = 0; i < nodes.length; i++){
+					ids.push(nodes[i].id);
+				}
+				$('#functionIds').val(ids.join(","));
+				/* alert(ids.join(",")); */
+				$('#roleForm').submit();
+			} else {
+				$.messager.alert('警告','表单存在非法数据项','warning');
+			}
+		});
 	});
 </script>
 </head>
@@ -83,7 +95,7 @@
 	</div>
 	<div region="center" style="overflow: auto; padding: 5px;"
 		border="false">
-		<form id="roleForm" method="post">
+		<form id="roleForm" method="post" action="${pageContext.request.contextPath }/role_save.action">
 			<table class="table-edit" width="80%" align="center">
 				<tr class="title">
 					<td colspan="2">角色信息</td>
@@ -106,6 +118,7 @@
 				<tr>
 					<td>授权</td>
 					<td>
+						<input type="hidden" name="functionIds" id="functionIds"/>
 						<ul id="functionTree" class="ztree"></ul>
 					</td>
 				</tr>

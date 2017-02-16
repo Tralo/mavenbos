@@ -2,6 +2,8 @@ package cn.itcast.bos.domain.user;
 
 import java.util.Date;
 
+import cn.itcast.bos.domain.auth.Role;
+
 /**
  * User entity. @author MyEclipse Persistence Tools
  */
@@ -23,6 +25,8 @@ public class User implements java.io.Serializable {
 	private String station;
 	private String telephone;
 	private String remark;
+	
+	private Role role;
 
 	// Constructors
 
@@ -120,6 +124,14 @@ public class User implements java.io.Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	@Override

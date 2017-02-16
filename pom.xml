@@ -71,12 +71,24 @@
 			<version>1.0.1.Final</version>
 		</dependency>
 		<!-- Servlet & Jsp -->
-		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>servlet-api</artifactId> 
-			<version>3.0-alpha-1</version> <scope>provided</scope> 只在编译和测试环境下使用，不参与打包运行，默认值Runtime 
-			</dependency> <dependency> <groupId>javax.servlet</groupId> <artifactId>jsp-api</artifactId> 
-			<version>2.0</version> <scope>provided</scope> </dependency> -->
-		<!-- <dependency> <groupId>org.apache.tomcat</groupId> <artifactId>tomcat-jsp-api</artifactId> 
-			<version>8.0.17</version> <scope>provided</scope> </dependency> -->
+		<!-- <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0-alpha-1</version>
+			<scope>provided</scope> 只在编译和测试环境下使用，不参与打包运行，默认值Runtime
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jsp-api</artifactId>
+			<version>8.0.17</version>
+			<scope>provided</scope>
+		</dependency> -->
 		<!-- log4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -170,12 +182,12 @@
 			<artifactId>jbpm-bpmn</artifactId>
 			<version>4.4</version>
 		</dependency>
-		<!-- javamail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>
@@ -195,8 +207,43 @@
 					<username>admin</username>
 					<password>admin</password>
 				</configuration>
+				<!-- 引入 juel jar 包  -->
+				<dependencies>
+					<dependency>
+						<groupId>de.odysseus.juel</groupId>
+						<artifactId>juel-api</artifactId>
+						<version>2.2.6</version>
+					</dependency>
+					<dependency>
+						<groupId>de.odysseus.juel</groupId>
+						<artifactId>juel-impl</artifactId>
+						<version>2.2.6</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 
 		</plugins>
 	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>juel</groupId>
+				<artifactId>juel-api</artifactId>
+				<version>2.2.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>juel</groupId>
+				<artifactId>juel-impl</artifactId>
+				<version>2.2.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>juel</groupId>
+				<artifactId>juel-engine</artifactId>
+				<version>2.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>

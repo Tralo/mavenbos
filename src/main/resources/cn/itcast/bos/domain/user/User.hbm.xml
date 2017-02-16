@@ -34,9 +34,13 @@
         <property name="remark" type="java.lang.String">
             <column name="remark" />
         </property>
+        <!-- 关联角色 -->
+        <many-to-one name="role" class="cn.itcast.bos.domain.auth.Role" column="role_id"></many-to-one>
     </class>
     <!-- 命名查询 -->
     <query name="User.login">
     	<![CDATA[from User where username = ? and password = ?]]>
     </query>
+    
+    
 </hibernate-mapping>

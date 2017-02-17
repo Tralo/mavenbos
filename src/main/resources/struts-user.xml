@@ -15,6 +15,19 @@
 			</result>
 			<!-- 添加用户 -->
 			<result name="saveSUCCESS">/WEB-INF/pages/admin/userlist.jsp</result>
+			<result name="listSUCCESS" type="json">
+				<param name="root">users</param>
+				<param name="includeProperties">
+					\[\d+\]\.id,
+					\[\d+\]\.username,
+					\[\d+\]\.telephone,
+					\[\d+\]\.gender,
+					\[\d+\]\.station,
+					\[\d+\]\.salary,
+					\[\d+\]\.birthday,
+					\[\d+\]\.role\.name,
+				</param>
+			</result>
 		</action>
 	</package>
 

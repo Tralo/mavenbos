@@ -1,6 +1,7 @@
 package cn.itcast.bos.web.action.user;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
@@ -60,6 +61,13 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		// 调用业务层 保存用户
 		userService.saveUser(user);
 		return "saveSUCCESS";
+	}
+	// 查询所有的用户
+	public String list(){
+		List<User> users = userService.listAll();
+		// 放入值栈
+		ActionContext.getContext().put("users", users);
+		return "listSUCCESS";
 	}
 
 }

@@ -76,9 +76,9 @@
 	}, {
 		field : 'telephone',
 		title : '电话',
-		width : 800,
+		width : 120,
 		rowspan : 2
-	} ], [ {
+	}], [ {
 		field : 'station',
 		title : '单位',
 		width : 80,
@@ -88,7 +88,20 @@
 		title : '工资',
 		width : 80,
 		align : 'right'
-	} ] ];
+	},{
+		field : 'role',
+		title :'角色',
+		width : 400 ,
+		align : 'left',
+		rowspan : 2,
+		formatter : function(value,rowData,rowIndex){
+			if(value == null){
+				return "";
+			}else{
+				return value.name;
+			}
+		}
+	}] ];
 	$(function(){
 		// 初始化 datagrid
 		// 创建grid
@@ -99,13 +112,14 @@
 			rownumbers : true,
 			striped : true,
 			toolbar : toolbar,
-			url : "json/users.json",
+			url : "${pageContext.request.contextPath}/user_list.action",
 			idField : 'id', 
 			frozenColumns : frozenColumns,
 			columns : columns,
 			onClickRow : onClickRow,
 			onDblClickRow : doDblClickRow
 		});
+		
 		
 		$("body").css({visibility:"visible"});
 		

@@ -1,5 +1,7 @@
 package cn.itcast.bos.service.user;
 
+import java.util.List;
+
 import cn.itcast.bos.domain.user.User;
 
 /**
@@ -26,5 +28,11 @@ public interface UserService {
 	 * @param user
 	 */
 	void saveUser(User user);
+
+	/**
+	 * 查询所有的用户列表
+	 * @return
+	 */
+	List<User> listAll();
 	
 }

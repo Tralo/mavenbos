@@ -37,4 +37,9 @@ public class UserServiceImpl extends BaseService implements UserService{
 		
 	}
 
+	@Override
+	public List<User> listAll() {
+		return userDAO.findAll();
+	}
+
 }

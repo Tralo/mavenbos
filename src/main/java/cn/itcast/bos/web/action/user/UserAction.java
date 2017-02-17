@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
+import cn.itcast.bos.annotation.Privilege;
 import cn.itcast.bos.domain.user.User;
 import cn.itcast.bos.web.action.base.BaseAction;
 
@@ -35,9 +36,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		//调用业务层
 		user.setId(loginUser.getId());
 		Map<String, Object> map = new HashMap();
-		
-		
-		System.out.println(user);
+//		System.out.println(user);
 		try {
 			//设置返回结果
 			userService.editPassword(user);
@@ -57,6 +56,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 	}
 	
 	// 业务方法 --- 添加用户
+	@Privilege("添加用户")
 	public String save(){
 		// 调用业务层 保存用户
 		userService.saveUser(user);

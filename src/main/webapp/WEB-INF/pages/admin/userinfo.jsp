@@ -29,6 +29,8 @@
 <script type="text/javascript">
 	$(function(){
 		$("body").css({visibility:"visible"});
+		$("#username").val("");
+		$("#password").val("");
 		$('#save').click(function(){
 			// 先校验
 			if($("#form").form('validate')){

@@ -2,6 +2,8 @@ package cn.itcast.bos.service.impl.user;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
+
 import cn.itcast.bos.domain.user.User;
 import cn.itcast.bos.service.base.BaseService;
 import cn.itcast.bos.service.user.UserService;
@@ -13,8 +15,14 @@ public class UserServiceImpl extends BaseService implements UserService{
 	public User login(User user) {
 		List<User> users = userDAO.findByNamedQuery("User.login", user.getUsername(),MD5Utils.md5(user.getPassword()));
 		if(users != null && users.size() > 0){
+			if(users.get(0).getRole() != null){
+				Hibernate.initialize(user.getRole().getFunctions());
+				
+			}
+			
 			return users.get(0);
 		}
+		
 		
 		return null;
 	}

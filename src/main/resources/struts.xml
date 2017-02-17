@@ -13,18 +13,25 @@
 		<!-- 注册拦截器 -->
  		<interceptors>
 			<interceptor name="login" class="cn.itcast.bos.web.action.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="privilege" class="cn.itcast.bos.web.action.interceptor.PrivilegeInterceptor"></interceptor>
 			<!-- 定义新的拦截器栈 -->
 			<interceptor-stack name="loginStack">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="login"></interceptor-ref>
 			</interceptor-stack>
+			<interceptor-stack name="privilegeStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="login"></interceptor-ref>
+				<interceptor-ref name="privilege"></interceptor-ref>
+			</interceptor-stack>
 		</interceptors>
 		
 		<!-- 设置默认拦截器栈 -->
-		<default-interceptor-ref name="loginStack"></default-interceptor-ref>
+		<default-interceptor-ref name="privilegeStack"></default-interceptor-ref>
  		
 		<global-results>
 			<result name="login">/login.jsp</result>
+			<result name="noprivilege">/noprivilege.jsp</result>
 		</global-results>
 		
 		<action name="index">

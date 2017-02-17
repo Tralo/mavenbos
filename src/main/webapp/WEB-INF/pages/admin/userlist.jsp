@@ -117,7 +117,18 @@
 			frozenColumns : frozenColumns,
 			columns : columns,
 			onClickRow : onClickRow,
-			onDblClickRow : doDblClickRow
+			onDblClickRow : doDblClickRow,
+			onRowContextMenu : function(e, rowIndex, rowData){
+				// e 代表事件对象
+				// rowIndex 行号
+				// rowData 行数据
+				e.preventDefault();// 阻止默认事件，（屏蔽默认cai da）
+				// 自定义右键菜单，使用 easyui提供的 menu控件
+				$('#mm').menu('show',{
+					left : e.pageX,
+					top : e.pageY
+				});
+			}
 		});
 		
 		
@@ -164,6 +175,40 @@
 <body class="easyui-layout" style="visibility:hidden;">
     <div region="center" border="false">
     	<table id="grid"></table>
+	</div>
+	<!-- 自定义菜单 -->
+	<div id="mm" class="easyui-menu" style="width: 120px;">
+		<div onclick="$('#grantRoleWindow').window('open');">菜单一</div>
+		<div>菜单二</div>
+	</div>
+	
+	<div class="easyui-window" title="授予角色" id="grantRoleWindow" closed="true" collapsible="false" minimizable="false" maximizable="false" style="top:100px;left:200px">
+		<div region="north" style="height:31px;overflow:hidden;" split="false" border="false" >
+			<div class="datagrid-toolbar">
+				<a id="save" icon="icon-save" href="#" class="easyui-linkbutton" plain="true" >保存</a>
+			</div>
+		</div>
+		<div region="center" style="overflow:auto;padding:5px;" border="false">
+			<form id="grantForm" action="${pageContext.request.contextPath }/user_grantRole.action" method="post">
+				<table class="table-edit" width="80%" align="center">
+					<tr class="title">
+						<td colspan="2">功能权限信息
+							<input type="hidden" name="id" id="showUserId"/>
+						</td>
+					</tr>
+					<tr>
+						<td width="200">授予用户</td>
+						<td id="showUserName"></td>
+					</tr>
+					<tr>
+						<td>角色列表</td>
+						<td>
+							<input type="text" class="easyui-combobox" name="role.id" data-options="valueField:'id',textField:'name',url:'${pageContext.request.contextPath }/role_list.action',required:true"/>
+						</td>
+					</tr>
+					</table>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

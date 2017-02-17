@@ -37,6 +37,17 @@
 					\[\d+\]\.parentId
 				</param>
 			</result>
+			<!-- 动态菜单 -->
+			<result name="menuSUCCESS" type="json">
+				<param name="root">functions</param>
+				<param name="includeProperties">
+					\[\d+\]\.id,
+					\[\d+\]\.name,
+					\[\d+\]\.parentId,
+					\[\d+\]\.click,
+					\[\d+\]\.page
+				</param>
+			</result>
 		</action>
 		<!-- 角色管理 -->
 		<action name="role_*" class="roleAction" method="{1}">

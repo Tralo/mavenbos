@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBody
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
+import cn.itcast.bos.annotation.Privilege;
 import cn.itcast.bos.domain.bc.Standard;
 import cn.itcast.bos.domain.user.User;
 import cn.itcast.bos.page.PageRequestBean;
@@ -38,6 +39,7 @@ public class StandardAction extends BaseAction implements ModelDriven<Standard>{
 	}
 	
 	// 业务方法 --- 保存标准
+	@Privilege("收派标准")
 	public String save(){
 		// 完善 model 数据
 		User user = (User) ServletActionContext.getRequest().getSession().getAttribute("user");

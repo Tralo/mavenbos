@@ -103,4 +103,12 @@ public class Function{
 		return parentFunction == null ? "0" : parentFunction.getId();
 	}
 	
+	public boolean getClick(){
+		if(page == null || page.trim().length() == 0){
+			return false;
+		} else{
+			return true;
+		}
+	}
+	
 }

@@ -36,7 +36,8 @@
 					title : "t" // 鼠标在停留在菜单上提示
 				},
 				simpleData : { // 简单数据 
-					enable : true
+					enable : true,
+					pIdKey: "parentId"
 				}
 			},
 			callback : {
@@ -46,7 +47,7 @@
 		
 		// 基本功能菜单加载
 		$.ajax({
-			url : '${pageContext.request.contextPath}/json/menu.json',
+			url : '${pageContext.request.contextPath}/function_menu.action',
 			type : 'POST',
 			dataType : 'text',
 			success : function(data) {

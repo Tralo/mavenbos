@@ -1,5 +1,7 @@
 package cn.itcast.bos.service.impl.auth;
 
+import java.util.List;
+
 import cn.itcast.bos.domain.auth.Function;
 import cn.itcast.bos.domain.auth.Role;
 import cn.itcast.bos.service.auth.RoleService;
@@ -22,6 +24,11 @@ public class RoleServiceImpl extends BaseService implements RoleService {
 		}
 		
 		
+	}
+
+	@Override
+	public List<Role> listAll() {
+		return roleDAO.findAll();
 	}
 
 }

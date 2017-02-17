@@ -47,7 +47,7 @@
 					}
 				}           
 			],
-			url : '',
+			url : '${pageContext.request.contextPath}/role_list.action',
 			columns : [[
 				{
 					field : 'id',

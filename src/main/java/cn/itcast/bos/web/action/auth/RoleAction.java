@@ -1,6 +1,10 @@
 package cn.itcast.bos.web.action.auth;
 
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.config.entities.ActionConfig;
 
 import cn.itcast.bos.domain.auth.Role;
 import cn.itcast.bos.web.action.base.BaseAction;
@@ -29,6 +33,17 @@ public class RoleAction extends BaseAction implements ModelDriven<Role>{
 		roleService.saveRole(role,functionIds);
 		
 		return "saveSUCCESS";
+	}
+	/**
+	 * 查询所有角色
+	 * @return
+	 */
+	public String list(){
+		List<Role> roles = roleService.listAll();
+		// 压入值栈
+		ActionContext.getContext().put("roles", roles);
+		
+		return "listSUCCESS";
 	}
 
 }

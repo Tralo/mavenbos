@@ -69,5 +69,11 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		ActionContext.getContext().put("users", users);
 		return "listSUCCESS";
 	}
+	// 业务方法 --- 授予角色
+	public String grantRole(){
+		//调用业务层
+		userService.grantRole(user);
+		return "grantRoleSUCCESS";
+	}
 
 }

@@ -34,5 +34,11 @@ public interface UserService {
 	 * @return
 	 */
 	List<User> listAll();
+
+	/**
+	 * 授予用户角色
+	 * @param user
+	 */
+	void grantRole(User user);
 	
 }

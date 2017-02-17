@@ -128,11 +128,24 @@
 					left : e.pageX,
 					top : e.pageY
 				});
+				// 右键点击数据行时记录 form中
+				$('#showUserId').val(rowData.id);
+				$('#showUserName').html(rowData.username);
+				
 			}
 		});
 		
 		
 		$("body").css({visibility:"visible"});
+		
+		// 为授予角色权限的按钮添加点击事件
+		$('#save').click(function(){
+			if($('#grantForm').form('validate')){
+				$('#grantForm').submit();
+			} else {
+				$.messager.alert('警告','表单中存在非法数据项!','warning');
+			}
+		});
 		
 	});
 	// 双击
@@ -178,7 +191,7 @@
 	</div>
 	<!-- 自定义菜单 -->
 	<div id="mm" class="easyui-menu" style="width: 120px;">
-		<div onclick="$('#grantRoleWindow').window('open');">菜单一</div>
+		<div onclick="$('#grantRoleWindow').window('open');">为用户授予权限</div>
 		<div>菜单二</div>
 	</div>
 	
@@ -203,7 +216,7 @@
 					<tr>
 						<td>角色列表</td>
 						<td>
-							<input type="text" class="easyui-combobox" name="role.id" data-options="valueField:'id',textField:'name',url:'${pageContext.request.contextPath }/role_list.action',required:true"/>
+							<input type="text" class="easyui-combobox" name="role.id" data-options="valueField:'id',textField:'name',url:'${pageContext.request.contextPath }/role_list.action',required:true,editable:false"/>
 						</td>
 					</tr>
 					</table>

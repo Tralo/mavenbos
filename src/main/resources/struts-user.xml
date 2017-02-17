@@ -28,6 +28,7 @@
 					\[\d+\]\.role\.name,
 				</param>
 			</result>
+			<result name="grantRoleSUCCESS">/WEB-INF/pages/admin/userlist.jsp</result>
 		</action>
 	</package>
 

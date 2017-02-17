@@ -42,4 +42,10 @@ public class UserServiceImpl extends BaseService implements UserService{
 		return userDAO.findAll();
 	}
 
+	@Override
+	public void grantRole(User user) {
+		User exitUser = userDAO.findById(user.getId());
+		exitUser.setRole(user.getRole());
+	}
+
 }

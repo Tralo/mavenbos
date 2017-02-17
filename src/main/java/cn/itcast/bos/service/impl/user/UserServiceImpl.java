@@ -16,7 +16,7 @@ public class UserServiceImpl extends BaseService implements UserService{
 		List<User> users = userDAO.findByNamedQuery("User.login", user.getUsername(),MD5Utils.md5(user.getPassword()));
 		if(users != null && users.size() > 0){
 			if(users.get(0).getRole() != null){
-				Hibernate.initialize(user.getRole().getFunctions());
+				Hibernate.initialize(users.get(0).getRole().getFunctions());
 				
 			}
 			

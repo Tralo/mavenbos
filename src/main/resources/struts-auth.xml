@@ -49,6 +49,13 @@
 					\[\d+\]\.description
 				</param>
 			</result>
+			<result name="ajaxlistSUCCESS" type="json">
+				<param name="root">roles</param>
+				<param name="includeProperties">
+					\[\d+]\.id,
+					\[\d+]\.name
+				</param>
+			</result>
 		</action>
 	</package>
 </struts>

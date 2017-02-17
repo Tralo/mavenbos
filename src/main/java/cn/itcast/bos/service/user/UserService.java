@@ -20,5 +20,11 @@ public interface UserService {
 	 * @param user
 	 */
 	void editPassword(User user);
+
+	/**
+	 * 添加用户
+	 * @param user
+	 */
+	void saveUser(User user);
 	
 }

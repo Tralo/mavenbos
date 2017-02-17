@@ -45,5 +45,16 @@ public class RoleAction extends BaseAction implements ModelDriven<Role>{
 		
 		return "listSUCCESS";
 	}
+	
+	/**
+	 * 获取角色列表
+	 */
+	public String ajaxlist(){
+		List<Role> roles = roleService.listAll();
+		// 压入值栈　
+		ActionContext.getContext().put("roles", roles);
+		
+		return "ajaxlistSUCCESS";
+	}
 
 }

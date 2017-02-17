@@ -54,5 +54,12 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		ActionContext.getContext().put("map", map);
 		return "editpasswordSUCCESS";
 	}
+	
+	// 业务方法 --- 添加用户
+	public String save(){
+		// 调用业务层 保存用户
+		userService.saveUser(user);
+		return "saveSUCCESS";
+	}
 
 }

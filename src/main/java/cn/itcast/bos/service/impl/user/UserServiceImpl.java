@@ -27,4 +27,14 @@ public class UserServiceImpl extends BaseService implements UserService{
 		existUser.setPassword(MD5Utils.md5(user.getPassword()));
 	}
 
+	@Override
+	public void saveUser(User user) {
+		user.setPassword(MD5Utils.md5(user.getPassword()));
+		if(user.getRole() != null && user.getRole().getId() != null && user.getRole().getId().length() == 0){
+			user.setRole(null);
+		}
+		userDAO.save(user);
+		
+	}
+
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -59,14 +60,17 @@
   			</tr>
   		</thead>
   		<tbody>
+  			<s:iterator value="#processDefinitions" var="processDefinition">
   				<tr>
-  					<td>1 </td>
-  					<td>中转配送流程</td>
-  					<td>1</td>
+  					<td><s:property value="id"/> </td>
+  					<td><s:property value="name"/></td>
+  					<td><s:property value="version"/></td>
   					<td>
   						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查看流程图</a>
   					</td>
   				</tr>
+  				
+  			</s:iterator>
   				<tr>
   					<td>2</td>
   					<td>请假审批流程</td>

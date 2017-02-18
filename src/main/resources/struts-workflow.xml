@@ -6,7 +6,11 @@
 	<package name="workflow" extends="needLogin">
 		<!-- 流程定义管理 -->
 		<action name="processdefinition_*" class="processDefinitionAction" method="{1}">
-			<result name="deploySUCCESS">/WEB-INF/pages/workflow/processdefinition_list.jsp</result>
+			<!-- 发布信息流程 -->
+			<result name="deploySUCCESS" type="redirectAction">processdefinition_list</result>
+			<!-- 查询所有流程定义 -->
+			<result name="listSUCCESS">/WEB-INF/pages/workflow/processdefinition_list.jsp</result>
+			
 		</action>
 	</package>
 </struts>

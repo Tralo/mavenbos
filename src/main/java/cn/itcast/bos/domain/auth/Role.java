@@ -1,5 +1,6 @@
 package cn.itcast.bos.domain.auth;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,7 +9,7 @@ import cn.itcast.bos.domain.user.User;
 /**
  * 角色
  */
-public class Role {
+public class Role implements Serializable{
 	
 	private String id;// uuid
 	private String name;// 

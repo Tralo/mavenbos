@@ -3,6 +3,7 @@ package cn.itcast.bos.web.action.base;
 import javax.annotation.Resource;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.jbpm.api.ProcessEngine;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -65,6 +66,9 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "roleService")
 	protected RoleService roleService;
+	
+	@Resource(name = "processEngine")
+	protected ProcessEngine processEngine;
 	
 	//属性驱动，分装分页参数
 	protected int page;

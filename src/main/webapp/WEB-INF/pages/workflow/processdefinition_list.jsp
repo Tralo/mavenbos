@@ -66,19 +66,17 @@
   					<td><s:property value="name"/></td>
   					<td><s:property value="version"/></td>
   					<td>
-  						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查看流程图</a>
+  						<s:if test="imageResourceName!=null">
+	  						<s:a action="processdefinition_viewpng" namespace="/" cssClass="easyui-linkbutton" data-options="iconCls:'icon-search'">查看流程图
+	  							<s:param name="deploymentId" value="deploymentId" />
+	  							<s:param name="imageResourceName" value="imageResourceName" />
+	  						</s:a>
+  						</s:if>
   					</td>
   				</tr>
   				
   			</s:iterator>
-  				<tr>
-  					<td>2</td>
-  					<td>请假审批流程</td>
-  					<td>2</td>
-  					<td>
-  						<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查看流程图</a>
-  					</td>
-  				</tr>
+  				
   		</tbody>
   	</table>
   </div>

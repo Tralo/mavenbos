@@ -10,6 +10,10 @@
 			<result name="deploySUCCESS" type="redirectAction">processdefinition_list</result>
 			<!-- 查询所有流程定义 -->
 			<result name="listSUCCESS">/WEB-INF/pages/workflow/processdefinition_list.jsp</result>
+			<!-- 查看图片 -->
+			<result name="viewpngSUCCESS" type="stream">
+				<param name="contentType">image/png</param>
+			</result>
 			
 		</action>
 	</package>

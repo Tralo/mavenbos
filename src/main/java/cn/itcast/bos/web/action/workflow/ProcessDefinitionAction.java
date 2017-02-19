@@ -4,6 +4,7 @@ package cn.itcast.bos.web.action.workflow;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,5 +61,33 @@ public class ProcessDefinitionAction extends BaseAction {
 		
 		return "listSUCCESS";
 	}
+	
+	// 业务方法 --- 查看流程图
+	public String viewpng(){
+		// 获得图片资源流
+		RepositoryService repositoryService = processEngine.getRepositoryService();
+		in = repositoryService.getResourceAsStream(deploymentId, imageResourceName);
+		return "viewpngSUCCESS";
+	}
+	private InputStream in;
+	
+	// 文件下载流
+	public InputStream getInputStream(){
+		return in;
+	}
+	
+	private String deploymentId;
+	private String imageResourceName;
+
+
+	public void setDeploymentId(String deploymentId) {
+		this.deploymentId = deploymentId;
+	}
+
+	public void setImageResourceName(String imageResourceName) {
+		this.imageResourceName = imageResourceName;
+	}
+	
+	
 
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="buy" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="253,70,48,48">
+      <transition name="to 设备采购" to="设备采购" g="-63,-19"/>
+   </start>
+   <end name="end1" g="257,337,48,48"/>
+   <task name="设备采购" g="236,182,92,52">
+      <transition name="to end1" to="end1" g="-46,-18"/>
+   </task>
+</process>

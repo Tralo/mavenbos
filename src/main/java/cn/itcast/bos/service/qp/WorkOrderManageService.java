@@ -16,4 +16,7 @@ public interface WorkOrderManageService extends PageQuery{
 	// 查询未审核的工作单
 	List<WorkOrderManage> listUnCheckWorkOrderManages();
 
+	// 对工作单进行审核
+	void check(WorkOrderManage workOrderManage);
+
 }

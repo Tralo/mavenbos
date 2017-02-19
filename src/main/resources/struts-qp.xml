@@ -25,6 +25,8 @@
 				</param>
 			</result>
 			<result name="listSUCCESS">/WEB-INF/pages/zhongzhuan/check.jsp</result>
+			<!-- 审批工作单，启动流程 -->
+			<result name="checkSUCCESS" type="redirectAction">workordermanage_list</result>
 		</action>
 
 	</package>

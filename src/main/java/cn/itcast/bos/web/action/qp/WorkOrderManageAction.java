@@ -87,5 +87,12 @@ public class WorkOrderManageAction extends BaseAction implements ModelDriven<Wor
 		ActionContext.getContext().put("workOrderManages", workOrderManages);
 		return "listSUCCESS";
 	}
+	// 业务方法 --- 对工作单进行审核，启动中转流程
+	public String check(){
+		
+		workOrderManageService.check(workOrderManage);
+		
+		return "checkSUCCESS";
+	}
 	
 }

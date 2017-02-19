@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.jbpm.api.ProcessEngine;
+
 import cn.itcast.bos.dao.GenericDAO;
 import cn.itcast.bos.domain.auth.Function;
 import cn.itcast.bos.domain.auth.Role;
@@ -16,6 +18,7 @@ import cn.itcast.bos.domain.qp.NoticeBill;
 import cn.itcast.bos.domain.qp.WorkBill;
 import cn.itcast.bos.domain.qp.WorkOrderManage;
 import cn.itcast.bos.domain.user.User;
+import cn.itcast.bos.domain.zm.ZhongZhuanInfo;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
 import cn.itcast.crm.service.CustomerService;
@@ -58,10 +61,14 @@ public abstract class BaseService {
 	@Resource(name = "functionDAO")
 	protected GenericDAO<Function> functionDAO;
 	
-	
 	@Resource(name = "roleDAO")
 	protected GenericDAO<Role> roleDAO;
 	
+	@Resource(name = "processEngine")
+	protected ProcessEngine processEngine;
+	
+	@Resource(name = "zhongZhuanInfoDAO")
+	protected GenericDAO<ZhongZhuanInfo> zhongZhuanInfoDAO;
 	
 	public <T> PageResponseBean pageQuery(PageRequestBean pageRequestBean,GenericDAO<T> dao) {
 		PageResponseBean pageResponseBean = new PageResponseBean();

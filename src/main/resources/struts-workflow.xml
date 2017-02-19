@@ -16,5 +16,10 @@
 			</result>
 			
 		</action>
+		<!-- 任务管理 -->
+		<action name="task_*" class="taskAction" method="{1}">
+			<!-- 查询组任务 -->
+			<result name="findgrouptaskSUCCESS">/WEB-INF/pages/workflow/grouptask.jsp</result>
+		</action>
 	</package>
 </struts>

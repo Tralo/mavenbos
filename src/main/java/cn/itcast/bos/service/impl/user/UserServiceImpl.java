@@ -22,11 +22,8 @@ public class UserServiceImpl extends BaseService implements UserService{
 				Hibernate.initialize(users.get(0).getRole().getFunctions());
 				
 			}
-			
 			return users.get(0);
 		}
-		
-		
 		return null;
 	}
 

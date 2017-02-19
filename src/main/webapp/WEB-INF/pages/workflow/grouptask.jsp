@@ -44,7 +44,12 @@
 					<tr>
 						<td><s:property value="id"/></td>
 						<td><s:property value="name"/></td>
-						<td></td>
+						<td>
+							<!-- task.getVariables 返回 map -->
+							<s:iterator value="variables" var="entry">
+								<s:property value="key" />=<s:property value="value" /><br>
+							</s:iterator>
+						</td>
 						<td><a href="#">拾取任务</a></td>
 					</tr>
 				</s:iterator>

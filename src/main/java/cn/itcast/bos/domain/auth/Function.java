@@ -3,10 +3,11 @@ package cn.itcast.bos.domain.auth;
  * 系统的功能权限
  */
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Function{
+public class Function implements Serializable{
 
 	private String id;// uuid;
 	private String name;// 功能名称

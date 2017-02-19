@@ -231,4 +231,12 @@ public class WorkOrderManage implements java.io.Serializable {
 		this.updatetime = updatetime;
 	}
 
+	@Override
+	public String toString() {
+		return "[编号=" + id + ", 到达城市=" + arrivecity + ", 货物=" + product + ", 数量=" + num
+				+ ", 重量=" + weight + ", 配载要求=" + floadreqr + "]";
+	}
+	
+	
+
 }

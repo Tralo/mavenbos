@@ -1,5 +1,7 @@
 package cn.itcast.bos.service.impl.qp;
 
+import java.util.List;
+
 import org.hibernate.Session;
 
 import cn.itcast.bos.domain.qp.WorkOrderManage;
@@ -24,6 +26,10 @@ public class WorkOrderManageServiceImpl extends BaseService implements WorkOrder
 	public PageResponseBean queryByLuence(String conditionName, String conditionValue, int page, int rows) {
 		
 		return workOrderManageDAO.queryByLucene(conditionName,conditionValue,page,rows);
+	}
+	@Override
+	public List<WorkOrderManage> listUnCheckWorkOrderManages() {
+		return workOrderManageDAO.findByNamedQuery("WorkOrderManage.listUnChecked");
 	}
 
 }

@@ -1,6 +1,7 @@
 package cn.itcast.bos.web.action.qp;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -78,4 +79,13 @@ public class WorkOrderManageAction extends BaseAction implements ModelDriven<Wor
 	public void setConditionValue(String conditionValue) {
 		this.conditionValue = conditionValue;
 	}
+	// 业务方法 --- 查询所有未审核的工作单
+	public String list(){
+		// 查询未审核的工作单
+		List<WorkOrderManage> workOrderManages = workOrderManageService.listUnCheckWorkOrderManages();
+		// 压入值栈
+		ActionContext.getContext().put("workOrderManages", workOrderManages);
+		return "listSUCCESS";
+	}
+	
 }

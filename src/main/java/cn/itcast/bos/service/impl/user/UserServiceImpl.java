@@ -3,7 +3,10 @@ package cn.itcast.bos.service.impl.user;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.jbpm.api.IdentityService;
+import org.jbpm.api.identity.Group;
 
+import cn.itcast.bos.domain.auth.Role;
 import cn.itcast.bos.domain.user.User;
 import cn.itcast.bos.service.base.BaseService;
 import cn.itcast.bos.service.user.UserService;
@@ -42,6 +45,15 @@ public class UserServiceImpl extends BaseService implements UserService{
 			user.setRole(null);
 		}
 		userDAO.save(user);
+		// 在添加用户的同时，往 JBPM 的数据库插入一个用户
+		IdentityService identityService = processEngine.getIdentityService();
+		identityService.createUser(user.getId(), user.getUsername(), user.getUsername());// 建立 JBPM 用户
+		if(user.getRole() != null){
+			// 在添加用户时，建立了和角色关系
+			Role role = roleDAO.findById(user.getRole().getId());
+			// 建立关系，JBPM 组 id 使用角色 name 属性
+			identityService.createMembership(user.getId(), user.getRole().getName());
+		}
 		
 	}
 
@@ -54,6 +66,18 @@ public class UserServiceImpl extends BaseService implements UserService{
 	public void grantRole(User user) {
 		User exitUser = userDAO.findById(user.getId());
 		exitUser.setRole(user.getRole());
+		// 建立 JBPM 用户和组关系，一个用户只属于一个组
+		// 先删除这个用户和原来关系，建立新关系
+		IdentityService identityService = processEngine.getIdentityService();
+		// 获得用户原来的组
+		List<Group> list = identityService.findGroupsByUser(exitUser.getId());
+		for(Group groud : list){
+			identityService.deleteMembership(exitUser.getId(), groud.getId(), null);
+		}
+		// 建立新关系
+		Role role = roleDAO.findById(exitUser.getRole().getId());
+		identityService.createMembership(exitUser.getId(), role.getName());
+		
 	}
 
 }

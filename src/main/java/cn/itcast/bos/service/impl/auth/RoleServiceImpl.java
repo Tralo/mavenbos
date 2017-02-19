@@ -2,6 +2,8 @@ package cn.itcast.bos.service.impl.auth;
 
 import java.util.List;
 
+import org.jbpm.api.IdentityService;
+
 import cn.itcast.bos.domain.auth.Function;
 import cn.itcast.bos.domain.auth.Role;
 import cn.itcast.bos.service.auth.RoleService;
@@ -22,7 +24,9 @@ public class RoleServiceImpl extends BaseService implements RoleService {
 //				function.getRoles().add(role); 同时写，要加入 inverse 属性，不然会重复插入
 			}
 		}
-		
+		// 建立 JBPM 系统组信息
+		IdentityService identityService = processEngine.getIdentityService();
+		identityService.createGroup(role.getName());
 		
 	}
 

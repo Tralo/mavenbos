@@ -22,6 +22,8 @@
 			<result name="findgrouptaskSUCCESS">/WEB-INF/pages/workflow/grouptask.jsp</result>
 			<!-- 拾取组任务 -->
 			<result name="taketaskSUCCESS" type="redirectAction">task_grouptask</result>
+			<!-- 查询个人任务列表 -->
+			<result name="personaltaskSUCCESS">/WEB-INF/pages/workflow/personaltask.jsp</result>
 		</action>
 	</package>
 </struts>

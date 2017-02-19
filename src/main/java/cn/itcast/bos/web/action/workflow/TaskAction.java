@@ -40,6 +40,18 @@ public class TaskAction extends BaseAction{
 		return "taketaskSUCCESS";
 	}
 	
+	// 业务方法 --- 获取个人任务列表
+	public String personaltask(){
+		// 使用 TaskService 查询个人任务
+		TaskService taskService = processEngine.getTaskService();
+		User user = (User) ServletActionContext.getRequest().getSession().getAttribute("user");
+		List<Task> tasks = taskService.findPersonalTasks(user.getId());
+		// 将结果压入值栈
+		ActionContext.getContext().put("tasks", tasks);
+		
+		return "personaltaskSUCCESS";
+	}
+	
 	// 属性驱动
 	private String taskId;
 

@@ -50,11 +50,8 @@
 								<s:property value="key"/> ：<s:property value="value"/>
 							</s:iterator>
 						</td>
-						<td> 
-							<s:a action="%{formResourceName}" cssClass="easyui-linkbutton" >
-								办理任务
-								<s:param name="taskId" value="id"></s:param>
-							</s:a>
+						<td>
+							<a href="#" class="easyui-linkbutton">办理业务</a>
 						</td>
 					</tr>
 				</s:iterator>

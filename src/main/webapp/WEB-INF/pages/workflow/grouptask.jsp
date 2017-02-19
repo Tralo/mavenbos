@@ -50,7 +50,11 @@
 								<s:property value="key" />=<s:property value="value" /><br>
 							</s:iterator>
 						</td>
-						<td><a href="#">拾取任务</a></td>
+						<td>
+							<s:a action="task_taketask" namespace="/" cssClass="easyui-linkbutton">拾取
+								<s:param name="taskId" value="id"></s:param>
+							</s:a>
+						</td>
 					</tr>
 				</s:iterator>
 			</tbody>

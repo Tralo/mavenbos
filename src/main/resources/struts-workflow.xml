@@ -20,6 +20,8 @@
 		<action name="task_*" class="taskAction" method="{1}">
 			<!-- 查询组任务 -->
 			<result name="findgrouptaskSUCCESS">/WEB-INF/pages/workflow/grouptask.jsp</result>
+			<!-- 拾取组任务 -->
+			<result name="taketaskSUCCESS" type="redirectAction">task_grouptask</result>
 		</action>
 	</package>
 </struts>

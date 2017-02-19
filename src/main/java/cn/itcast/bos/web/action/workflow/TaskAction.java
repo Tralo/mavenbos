@@ -29,6 +29,23 @@ public class TaskAction extends BaseAction{
 		
 		return "findgrouptaskSUCCESS";
 	}
+	// 业务方法 --- 拾取组任务
+	public String taketask(){
+		// 调用 TaskService 方法进行组任务拾取
+		TaskService taskService = processEngine.getTaskService();
+		User user = (User) ServletActionContext.getRequest().getSession().getAttribute("user");
+		
+		taskService.takeTask(taskId, user.getId());
+		
+		return "taketaskSUCCESS";
+	}
+	
+	// 属性驱动
+	private String taskId;
+
+	public void setTaskId(String taskId) {
+		this.taskId = taskId;
+	}
 	
 
 }

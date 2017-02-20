@@ -18,6 +18,9 @@ import cn.itcast.bos.domain.qp.NoticeBill;
 import cn.itcast.bos.domain.qp.WorkBill;
 import cn.itcast.bos.domain.qp.WorkOrderManage;
 import cn.itcast.bos.domain.user.User;
+import cn.itcast.bos.domain.zm.InStore;
+import cn.itcast.bos.domain.zm.OutStore;
+import cn.itcast.bos.domain.zm.ReceiveGoodsInfo;
 import cn.itcast.bos.domain.zm.TransferInfo;
 import cn.itcast.bos.domain.zm.ZhongZhuanInfo;
 import cn.itcast.bos.page.PageRequestBean;
@@ -73,6 +76,15 @@ public abstract class BaseService {
 	
 	@Resource(name = "transferInfoDAO")
 	protected GenericDAO<TransferInfo> transferInfoDAO;
+	
+	@Resource(name = "inStoreDAO")
+	protected GenericDAO<InStore> inStoreDAO;
+	
+	@Resource(name = "outStoreDAO")
+	protected GenericDAO<OutStore> outStoreDAO;
+	
+	@Resource(name = "receiveGoodsInfoDAO")
+	protected GenericDAO<ReceiveGoodsInfo> receiveGoodsInfoDAO;
 	
 	public <T> PageResponseBean pageQuery(PageRequestBean pageRequestBean,GenericDAO<T> dao) {
 		PageResponseBean pageResponseBean = new PageResponseBean();

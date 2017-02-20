@@ -26,6 +26,9 @@
 			<result name="personaltaskSUCCESS">/WEB-INF/pages/workflow/personaltask.jsp</result>
 			<!-- 办理中转环节 -->
 			<result name="saveTransferinfoSUCCESS" type="redirectAction">task_personaltask</result>
+			<result name="instorecompleteSUCCESS" type="redirectAction">task_personaltask</result>
+			<result name="outstorecompleteSUCCESS" type="redirectAction">task_personaltask</result>
+			<result name="receiveinfocompleteSUCCESS" type="redirectAction">task_personaltask</result>
 		</action>
 	</package>
 </struts>

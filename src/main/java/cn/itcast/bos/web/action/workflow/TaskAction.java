@@ -10,6 +10,9 @@ import org.jbpm.api.task.Task;
 import com.opensymphony.xwork2.ActionContext;
 
 import cn.itcast.bos.domain.user.User;
+import cn.itcast.bos.domain.zm.InStore;
+import cn.itcast.bos.domain.zm.OutStore;
+import cn.itcast.bos.domain.zm.ReceiveGoodsInfo;
 import cn.itcast.bos.domain.zm.TransferInfo;
 import cn.itcast.bos.web.action.base.BaseAction;
 /**
@@ -64,6 +67,43 @@ public class TaskAction extends BaseAction{
 		bosTaskService.completeTransferInfoTask(transferInfo,taskId);
 		
 		return "saveTransferinfoSUCCESS";
+	}
+	// 业务方法 --- 办理入库任务
+	public String instorecomplete(){
+		// 将业务数据封装 PO 对象
+		InStore instore = new InStore();
+		instore.setInfo(info);
+		instore.setUpdateTime(new Date());
+		
+		// 调用业务层
+		bosTaskService.completeInStoreTask(instore,taskId);
+		
+		return "instorecompleteSUCCESS";
+	}
+	
+	public String outstorecomplete(){
+		// 将业务数据封装 PO 对象
+		OutStore outStore = new OutStore();
+		outStore.setInfo(info);
+		outStore.setUpdateTime(new Date());
+		
+		// 调用业务层
+		bosTaskService.completeOutStoreTask(outStore,taskId);
+		
+		return "outstorecompleteSUCCESS";
+	}
+	
+	// 业务方法 --- 签收
+	public String receiveinfocomplete(){
+		// 将业务数据封装 PO 对象
+		ReceiveGoodsInfo receiveGoodsInfo = new ReceiveGoodsInfo();
+		receiveGoodsInfo.setInfo(info);
+		receiveGoodsInfo.setUpdateTime(new Date());
+		
+		// 调用业务层
+		bosTaskService.completeReceiveGoodsInfo(receiveGoodsInfo,taskId);
+		
+		return "receiveinfocompleteSUCCESS";
 	}
 	
 	// 属性驱动

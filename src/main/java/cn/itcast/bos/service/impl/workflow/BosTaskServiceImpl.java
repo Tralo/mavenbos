@@ -9,6 +9,9 @@ import org.jbpm.pvm.internal.model.ExecutionImpl;
 import org.jbpm.pvm.internal.model.ProcessDefinitionImpl;
 import org.jbpm.pvm.internal.model.TransitionImpl;
 
+import cn.itcast.bos.domain.zm.InStore;
+import cn.itcast.bos.domain.zm.OutStore;
+import cn.itcast.bos.domain.zm.ReceiveGoodsInfo;
 import cn.itcast.bos.domain.zm.TransferInfo;
 import cn.itcast.bos.domain.zm.ZhongZhuanInfo;
 import cn.itcast.bos.service.base.BaseService;
@@ -39,6 +42,48 @@ public class BosTaskServiceImpl extends BaseService implements BosTaskService {
 			
 		}
 	}
+	@Override
+	public void completeInStoreTask(InStore instore, String taskId) {
+		//1. 业务数据持久化
+		inStoreDAO.save(instore);
+		
+		//2. 关联流程变量
+		TaskService taskService = processEngine.getTaskService();
+		ZhongZhuanInfo zhongZhuanInfo = (ZhongZhuanInfo) taskService.getVariable(taskId, "zhongZhuanInfo");
+		zhongZhuanInfo.setInStore(instore);
+		
+		//3. 办理任务，流程向后流转
+		taskService.completeTask(taskId, "to 出库");
+		
+	}
+	@Override
+	public void completeOutStoreTask(OutStore outStore, String taskId) {
+		//1. 业务数据持久化
+		outStoreDAO.save(outStore);
+		//2. 关联流程变量
+		TaskService taskService = processEngine.getTaskService();
+		ZhongZhuanInfo zhongZhuanInfo = (ZhongZhuanInfo) taskService.getVariable(taskId, "zhongZhuanInfo");
+		zhongZhuanInfo.setOutStore(outStore);
+		
+		//3. 办理任务，流程向后流转
+		taskService.completeTask(taskId, "to 配送签收");
+		
+	}
+	@Override
+	public void completeReceiveGoodsInfo(ReceiveGoodsInfo receiveGoodsInfo, String taskId) {
+		//1. 业务数据持久化
+		receiveGoodsInfoDAO.save(receiveGoodsInfo);
+		//2. 关联流程变量
+		TaskService taskService = processEngine.getTaskService();
+		ZhongZhuanInfo zhongZhuanInfo = (ZhongZhuanInfo) taskService.getVariable(taskId, "zhongZhuanInfo");
+		zhongZhuanInfo.setReceiveGoodsInfo(receiveGoodsInfo);
+		
+		//3. 办理业务，流程向后流转
+		taskService.completeTask(taskId,"to end1");
+		
+	}
+	
+	
 	/**
 	 * 自由流转
 	 * @param task 当前任务
@@ -67,5 +112,6 @@ public class BosTaskServiceImpl extends BaseService implements BosTaskService {
 			envImpl.close();
 		}
 	}
+
 
 }

@@ -20,6 +20,7 @@ import cn.itcast.bos.service.bc.SubareaService;
 import cn.itcast.bos.service.qp.NoticeBillService;
 import cn.itcast.bos.service.qp.WorkOrderManageService;
 import cn.itcast.bos.service.user.UserService;
+import cn.itcast.bos.service.workflow.BosTaskService;
 import cn.itcast.bos.web.action.auth.RoleAction;
 import cn.itcast.crm.service.CustomerService;
 
@@ -69,6 +70,9 @@ public abstract class BaseAction extends ActionSupport{
 	
 	@Resource(name = "processEngine")
 	protected ProcessEngine processEngine;
+	
+	@Resource(name = "bosTaskService")
+	protected BosTaskService bosTaskService;
 	
 	//属性驱动，分装分页参数
 	protected int page;

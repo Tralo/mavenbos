@@ -18,6 +18,7 @@ import cn.itcast.bos.domain.qp.NoticeBill;
 import cn.itcast.bos.domain.qp.WorkBill;
 import cn.itcast.bos.domain.qp.WorkOrderManage;
 import cn.itcast.bos.domain.user.User;
+import cn.itcast.bos.domain.zm.TransferInfo;
 import cn.itcast.bos.domain.zm.ZhongZhuanInfo;
 import cn.itcast.bos.page.PageRequestBean;
 import cn.itcast.bos.page.PageResponseBean;
@@ -69,6 +70,9 @@ public abstract class BaseService {
 	
 	@Resource(name = "zhongZhuanInfoDAO")
 	protected GenericDAO<ZhongZhuanInfo> zhongZhuanInfoDAO;
+	
+	@Resource(name = "transferInfoDAO")
+	protected GenericDAO<TransferInfo> transferInfoDAO;
 	
 	public <T> PageResponseBean pageQuery(PageRequestBean pageRequestBean,GenericDAO<T> dao) {
 		PageResponseBean pageResponseBean = new PageResponseBean();

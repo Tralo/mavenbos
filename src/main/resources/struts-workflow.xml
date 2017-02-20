@@ -24,6 +24,8 @@
 			<result name="taketaskSUCCESS" type="redirectAction">task_grouptask</result>
 			<!-- 查询个人任务列表 -->
 			<result name="personaltaskSUCCESS">/WEB-INF/pages/workflow/personaltask.jsp</result>
+			<!-- 办理中转环节 -->
+			<result name="saveTransferinfoSUCCESS" type="redirectAction">task_personaltask</result>
 		</action>
 	</package>
 </struts>

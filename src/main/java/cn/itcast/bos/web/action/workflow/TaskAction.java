@@ -1,5 +1,6 @@
 package cn.itcast.bos.web.action.workflow;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
@@ -9,6 +10,7 @@ import org.jbpm.api.task.Task;
 import com.opensymphony.xwork2.ActionContext;
 
 import cn.itcast.bos.domain.user.User;
+import cn.itcast.bos.domain.zm.TransferInfo;
 import cn.itcast.bos.web.action.base.BaseAction;
 /**
  * 进行任务相关操作
@@ -51,6 +53,18 @@ public class TaskAction extends BaseAction{
 		
 		return "personaltaskSUCCESS";
 	}
+	// 业务方法 --- 办理中转环节任务
+	public String saveTransferinfo(){
+		// 请求数据封装到 model
+		TransferInfo transferInfo = new TransferInfo();
+		transferInfo.setInfo(info);
+		transferInfo.setArrive(arrive);
+		transferInfo.setUpdateTime(new Date());
+		// 调用业务层
+		bosTaskService.completeTransferInfoTask(transferInfo,taskId);
+		
+		return "saveTransferinfoSUCCESS";
+	}
 	
 	// 属性驱动
 	private String taskId;
@@ -58,6 +72,16 @@ public class TaskAction extends BaseAction{
 	public void setTaskId(String taskId) {
 		this.taskId = taskId;
 	}
+	private String info;
+	private String arrive;
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	public void setArrive(String arrive) {
+		this.arrive = arrive;
+	}
+	
 	
 
 }

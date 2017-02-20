@@ -42,10 +42,12 @@
 	           	</tr>
 	           	<tr>
 	           		<td>是否到达:</td>
-	           		<td><select name="arrive" class="easyui-combobox">
-	           			<option value="0">未到达</option>
-	           			<option value="1">到达</option>
-	           		</select></td>
+	           		<td>
+		           		<select name="arrive" class="easyui-combobox">
+		           			<option value="0">未到达</option>
+		           			<option value="1">到达</option>
+		           		</select>
+	           		</td>
 	           	</tr>
 	           	<tr>
 	           		<td colspan="2">

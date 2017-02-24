@@ -30,5 +30,8 @@
 			<result name="outstorecompleteSUCCESS" type="redirectAction">task_personaltask</result>
 			<result name="receiveinfocompleteSUCCESS" type="redirectAction">task_personaltask</result>
 		</action>
+		<action name="processinstance_*" class="processinstanceAction" method="{1}">
+			<result name="listSUCCESS">/WEB-INF/pages/workflow/processinstance.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,28 +51,20 @@
   			</tr>
   		</thead>
   		<tbody>
+  			<s:iterator value="#processInstances" var="processInstance">
   				<tr>
-  					<td>1</td>
-  					<td>1 </td>
-  					<td>中转</td>
+  					<td><s:property value="id"/></td>
+  					<td><s:property value="processDefinitionId"/></td>
+  					<td><s:property value="#processInstance.findActiveActivityNames()"/></td>
   					<td>
-  						<a href="#')">查看流程图</a>
+  						<a href="#">查看流程图</a>
   					</td>
   					<td>
   						<a href="#">查看实例运行信息</a>
   					</td>
   				</tr>
-  				<tr>
-  					<td>2</td>
-  					<td>1 </td>
-  					<td>入库</td>
-  					<td>
-  						<a href="#')">查看流程图</a>
-  					</td>
-  					<td>
-  						<a href="#">查看实例运行信息</a>
-  					</td>
-  				</tr>
+  			</s:iterator>
+  				
   		</tbody>
    	  </table>
    </div>

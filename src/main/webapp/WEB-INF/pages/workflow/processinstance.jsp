@@ -40,14 +40,14 @@
 </head>
 <body class="easyui-layout">
    <div region="center">
-   	  <table id="grid" class="easyui-datagrid">
+   	  <table id="grid" class="easyui-datagrid" data-options="nowrap:false">
    	  	<thead>
   			<tr>
   				<th data-options="field:'id'" width="120">实例编号</th>
   				<th data-options="field:'name'" width="200">流程定义编号</th>
   				<th data-options="field:'activity'" width="120">运行到哪个任务</th>
+  				<th data-options="field:'viewRuntime'" width="400">查看实例运行信息</th>
   				<th data-options="field:'viewpng'" width="200">查看流程图</th>
-  				<th data-options="field:'viewRuntime'" width="200">查看实例运行信息</th>
   			</tr>
   		</thead>
   		<tbody>
@@ -57,10 +57,13 @@
   					<td><s:property value="processDefinitionId"/></td>
   					<td><s:property value="#processInstance.findActiveActivityNames()"/></td>
   					<td>
-  						<a href="#">查看流程图</a>
+  						<!-- 遍历 map -->
+  						<s:iterator value="variables" var="entry">
+  							<s:property value="key"/>=<s:property value="value"/>
+  						</s:iterator>
   					</td>
   					<td>
-  						<a href="#">查看实例运行信息</a>
+  						<a href="#">查看流程图</a>
   					</td>
   				</tr>
   			</s:iterator>
